@@ -5,6 +5,21 @@
   </head>
   <body>
     <div id='layout' class='layout'>
+      <% flash.keys.each do |name| %>
+        <div class="flash flash-<%= name.to_s %>">
+          <span class="flash-close-button" onclick="this.parentElement.style.display='none';">&times;</span>
+          <span class=flash-content><%= flash[name] %></span>
+        </div>
+      <% end %>
+      <% if signed_in? %>
+        <a href='/signout'>Sign out</a>
+      <% else %>
+        <a href='/signup'>Sign up</a>
+        <a href='/signin'>Sign in</a>
+      <% end %>
+      <% if signed_in? %>
+        <a href='/users/<%= current_user.id %>'>Account</a>
+      <% end %>
       <%= yield %>
     </div>
   </body>
