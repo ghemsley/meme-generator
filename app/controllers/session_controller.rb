@@ -1,6 +1,4 @@
 require './config/environment'
 
-module Controllers
-  class SessionController < ApplicationController
-  end
+class SessionController < ApplicationController
 end

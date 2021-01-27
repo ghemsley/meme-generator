@@ -1,6 +1,3 @@
 require './config/environment'
-
-module Controllers
-  class UserController < ApplicationController
-  end
+class UserController < ApplicationController
 end
