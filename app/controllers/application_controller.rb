@@ -13,5 +13,12 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    def signed_in?
+      if session[:user_id]
+        true
+      else
+        false
+      end
+    end
   end
 end
