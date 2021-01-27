@@ -22,6 +22,7 @@ class SessionController < ApplicationController
     password = params[:user][:password]
     user = User.find_by(username: username)
     if user&.authenticate(password)
+      session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
       flash[:signin_error] = "Error: Failed to authenticate"
