@@ -6,4 +6,5 @@ end
 
 use SessionController
 use UserController
+use MemeController
 run ApplicationController

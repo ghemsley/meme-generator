@@ -27,9 +27,12 @@ GEM
     multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.4)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    puma (5.1.1)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-contrib (2.3.0)
       rack (~> 2.0)
@@ -101,6 +104,7 @@ DEPENDENCIES
   imgkit
   json
   pry
+  puma
   rack-contrib
   rake
   require_all
