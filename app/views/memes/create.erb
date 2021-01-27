@@ -1,0 +1,10 @@
+<h1>Create a meme</h1>
+<div class='form-container'>
+  <form action='/memes/create' method='POST' enctype="multipart/form-data">
+    <input type='text' name='meme[name]' placeholder='Name' id='name' class='text-input' required >
+    <label>Upload an image
+      <input type='file' accept='image/*' name='meme[image]' id='image-upload' class='image-upload' required >
+    </label>
+    <input type='submit' class='submit-button' value='Create'>
+  </form>
+</div>
