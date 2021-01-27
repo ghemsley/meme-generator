@@ -1,3 +1,79 @@
+html {
+  font-family: Nunito, 'Nunito', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
 .layout {
   width: 100%;
+}
+
+.flash {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  max-width: max-content;
+  color: white;
+  background-color: gray;
+  border-radius: 6px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  padding-left: 48px;
+  padding-right: 48px;
+  box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
+    1px 6px 10px rgba(39, 44, 49, 0.12);
+  .flash-close-button {
+    position: relative;
+    top: -16px;
+    right: -106%;
+    color: black !important;
+    transform: scale(2);
+    background: white !important;
+    border-radius: 6px;
+    padding: 8px;
+    padding-top: 2px;
+    padding-bottom: 4px;
+    margin-right: -32px;
+    text-decoration: none;
+  }
+  .flash-content {
+    position: relative;
+    top: 8px;
+  }
+}
+
+.flash-error {
+  background-color: crimson;
+}
+
+.flash-success {
+  background-color: hsl(160, 75%, 40%);
+}
+
+.flash-info {
+  background-color: dodgerblue;
+}
+
+.form-container {
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    .text-input {
+      width: 10em;
+    }
+    label {
+      input {
+        margin-left: 1em;
+      }
+    }
+    .file-upload {
+      width: fit-content;
+    }
+    .submit-button {
+      width: fit-content;
+    }
+  }
 }
