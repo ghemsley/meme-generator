@@ -38,4 +38,6 @@ ActiveRecord::Schema.define(version: 2021_01_26_171314) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "memes", "users", on_delete: :cascade
+  add_foreign_key "ratings", "memes", on_delete: :cascade
 end
