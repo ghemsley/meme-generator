@@ -1,0 +1,13 @@
+<h1>Memes</h1>
+<div class='memes-container'>
+  <% @memes.each do |meme| %>
+    <h2 class='meme-name'><%= meme.name %></h2>
+    <img class='meme-image'/>
+</div>
+
+<% js_custom_add("
+  imgArray = document.querySelectorAll('.meme-image')
+  imgArray.map(meme => {
+
+  })
+") %>
