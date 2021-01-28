@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 2021_01_26_171314) do
 
   create_table "memes", force: :cascade do |t|
     t.integer "user_id"
-    t.string "name"
-    t.string "top_caption"
-    t.string "bottom_caption"
-    t.binary "image"
+    t.string "name", null: false
+    t.string "top_caption", null: false
+    t.string "bottom_caption", null: false
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_memes_on_user_id"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 2021_01_26_171314) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "meme_id"
-    t.integer "number"
+    t.integer "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["meme_id"], name: "index_ratings_on_meme_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

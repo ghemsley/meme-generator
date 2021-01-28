@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'activerecord'
 gem 'bcrypt'
+gem 'carrierwave'
 gem 'imgkit'
 gem 'json'
 gem 'puma'

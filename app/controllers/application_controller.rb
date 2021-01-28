@@ -1,6 +1,8 @@
 require './config/environment'
 require 'sinatra/flash'
 require 'securerandom'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 class ApplicationController < Sinatra::Base
   configure do
     set :server, :puma
