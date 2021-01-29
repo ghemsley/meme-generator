@@ -16,6 +16,11 @@ class ApplicationController < Sinatra::Base
     register(Sinatra::Flash)
   end
 
+  not_found do
+    flash[:error] = 'Error: Page not found'
+    redirect '/'
+  end
+
   get '/' do
     erb :index
   end

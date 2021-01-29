@@ -22,7 +22,7 @@ global.formSubmit = (event) => {
           })
             .then((response) => console.log(response))
             .then(() => {
-              window.location.href = `/users/${user_id}`
+              window.location.href = `/users/${user_id}/memes`
             })
             .catch(function (error) {
               console.error('Error: Failed to save image to server', error)
