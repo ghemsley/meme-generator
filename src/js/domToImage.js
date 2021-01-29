@@ -53,7 +53,9 @@ global.formSubmit = (event) => {
             method: 'POST',
             body: formData
           })
-            .then((response) => console.log(response))
+            .then((response) => console.log(response)).then(() => {
+              window.location.href = `/users/${user_id}`
+            })
             .catch(function (error) {
               console.error('Error: Failed to save image to server', error)
             })
