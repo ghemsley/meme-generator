@@ -1,0 +1,17 @@
+{
+  "name": "MemeGenerator",
+  "version": "1.0.0",
+  "description": "Dank memes",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Graham Hemsley",
+  "license": "MIT",
+  "dependencies": {
+    "dom-to-image-more": "^2.8.0",
+    "webpack": "^5.18.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.4.0"
+  }
+}
