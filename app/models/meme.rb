@@ -10,4 +10,7 @@ class Meme < ActiveRecord::Base
   validates :user_id, presence: true
   validates :name, presence: true
   validates :image, presence: true
+  validates :top_caption, presence: true
+  validates :bottom_caption, presence: true
+  validates :original_image, presence: true
 end

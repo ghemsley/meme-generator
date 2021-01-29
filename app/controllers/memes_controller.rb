@@ -25,15 +25,16 @@ class MemesController < ApplicationController
         top_caption = params[:meme][:top_caption]
         bottom_caption = params[:meme][:bottom_caption]
         image = params[:meme][:image]
+        original_image = params[:meme][:original_image]
         meme = Meme.new
         meme.user_id = user.id
         meme.name = name
         meme.top_caption = top_caption
         meme.bottom_caption = bottom_caption
         meme.image = image
+        meme.original_image = original_image
         if meme.save
           flash[:success] = 'Success: Created a new meme!'
-          redirect "/memes/#{meme.id}"
         else
           flash[:error] = 'Error: Failed to create meme'
         end

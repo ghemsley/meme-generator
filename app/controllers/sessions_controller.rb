@@ -1,23 +1,6 @@
 require './config/environment'
 
 class SessionsController < ApplicationController
-  get '/signup' do
-    erb :'sessions/signup'
-  end
-
-  post '/signup' do
-    username = params[:user][:username]
-    password = params[:user][:password]
-    user = User.new(username: username, password: password)
-    if user.save
-      flash[:success] = 'Success: Your account has been created'
-      redirect '/signin'
-    else
-      flash[:error] = 'Error: Failed to create user'
-      redirect '/signup'
-    end
-  end
-
   get '/signin' do
     erb :'sessions/signin'
   end

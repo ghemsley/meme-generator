@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :server, :puma
     set :public_folder, 'public'
     set :views, 'app/views'
+    use Rack::MethodOverride
     use Rack::Session::Cookie, key: 'rack.session',
                                path: '/',
                                secret: SecureRandom.hex(64)

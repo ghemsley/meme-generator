@@ -6,7 +6,7 @@ class CreateMemes < ActiveRecord::Migration[6.1]
       t.string :top_caption, null: false
       t.string :bottom_caption, null: false
       t.string :image, null: false
-      t.string :original_image
+      t.string :original_image, null: false
       t.timestamps null: false
     end
   end

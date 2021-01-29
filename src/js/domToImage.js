@@ -37,7 +37,6 @@ global.formSubmit = (event) => {
     domtoimage.toPng(innerContainer).then(function (dataUrl) {
       let image2 = new Image()
       image2.src = dataUrl
-      document.querySelector('.layout').appendChild(image2)
       fetch(dataUrl)
         .then((response) => {
           return response.blob()
@@ -48,7 +47,7 @@ global.formSubmit = (event) => {
           formData.append('meme[top_caption]', topCaption)
           formData.append('meme[bottom_caption]', bottomCaption)
           formData.append('meme[image]', file2, name + '.png')
-          // formData.append('meme[original_image]', file, name + '_original.png')
+          formData.append('meme[original_image]', file, name + '_original.png')
           fetch('/memes', {
             method: 'POST',
             body: formData
