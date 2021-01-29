@@ -21,7 +21,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def signed_in?
-      if session[:user_id] || @user
+      if session[:user_id]
         true
       else
         false
@@ -29,12 +29,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      if @user
-        @user
-      elsif session[:user_id]
-        @user ||= User.find_by_id(session[:user_id])
-        @user
-      end
+      return unless session[:user_id]
+
+      @user ||= User.find_by_id(session[:user_id])
+      @user
     end
   end
 end

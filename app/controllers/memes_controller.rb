@@ -17,9 +17,9 @@ class MemesController < ApplicationController
   end
 
   post '/memes' do
-    if session[:user_id]
+    if signed_in?
       user_id = session[:user_id]
-      user = User.find_by_id(user_id)
+      user = current_user
       if user
         name = params[:meme][:name]
         top_caption = params[:meme][:top_caption]
