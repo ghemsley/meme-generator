@@ -322,6 +322,7 @@ nav {
       transition: all ease 100ms;
       background: #0588a6;
       margin: auto;
+      margin-bottom: 0.35em;
       padding: 0.333em;
       padding-left: 1em;
       padding-right: 1em;
@@ -342,16 +343,11 @@ nav {
 }
 
 .outer-container {
-  margin: 0px;
   width: fit-content;
   height: fit-content;
   text-align: center;
   margin: auto;
   padding: 0px;
-}
-
-.save-button {
-  margin-top: 1em;
 }
 
 .inner-container {
@@ -402,34 +398,45 @@ nav {
   .meme-link {
     flex-grow: 1;
     flex-shrink: 1;
+    width: 320px;
     max-width: 480px;
     margin: auto;
     padding: 0px;
     .meme {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      row-gap: 16px;
+      column-gap: 16px;
+      padding: 1em;
       box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
       transition: all ease 250ms;
       border-radius: 8px;
       background-color: white;
-      height: fit-content;
-      padding: 1em;
       &:hover {
         transition: all ease 250ms;
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.48),
           1px 6px 10px rgba(39, 44, 49, 0.24);
         transform: scale(1.025);
       }
-
+      p {
+        max-width: fit-content;
+        margin: auto;
+        padding: 0px;
+      }
       h2 {
+        margin: auto;
         margin-top: 0.5em;
-        margin-left: 0.5em;
         margin-bottom: 0;
+        max-width: fit-content;
       }
       img {
-        object-fit: cover;
-        max-height: 320px;
+        object-fit: contain;
         padding: 0px;
         margin: 0px;
+        width: 100%;
+        max-height: 480px;
       }
     }
   }
@@ -490,5 +497,28 @@ nav {
       color: white;
       background: #00afd7;
     }
+  }
+}
+
+form button {
+  font-size: larger;
+  transition: all ease 100ms;
+  background: #0588a6;
+  margin: auto;
+  margin-top: 1em;
+  padding: 0.333em;
+  padding-left: 1em;
+  padding-right: 1em;
+  color: white;
+  width: 100%;
+  border-radius: 4px;
+  height: max-content;
+  box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.12),
+    1px 6px 10px rgba(39, 44, 49, 0.06);
+  border: none;
+  &:hover {
+    transform: scale(1.025);
+    color: white;
+    background: #00afd7;
   }
 }

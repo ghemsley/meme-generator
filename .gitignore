@@ -68,3 +68,6 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+
+### custom
+.DS_Store

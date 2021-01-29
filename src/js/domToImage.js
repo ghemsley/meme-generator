@@ -35,6 +35,7 @@ global.formSubmit = (event) => {
   
   if (document.querySelector('.outer-container') != null) {
     document.querySelector('.outer-container').remove()
+    document.querySelector('.form-container form button')
   }
   let outerContainer = document.createElement('div')
   let innerContainer = document.createElement('div')
@@ -63,9 +64,9 @@ global.formSubmit = (event) => {
 
   let button = document.createElement('button')
   button.innerHTML = 'Save meme'
-  button.className = 'save-button'
+  button.className = 'submit-button'
   button.onclick = buttonSubmit
-  outerContainer.appendChild(button)
+  document.querySelector('.form-container form').appendChild(button)
   innerContainer.appendChild(topCaptionP)
   innerContainer.appendChild(image)
   innerContainer.appendChild(bottomCaptionP)
