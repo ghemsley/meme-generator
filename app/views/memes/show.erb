@@ -1,2 +1,6 @@
-<%= @meme.name %>
-<img src='<%= @meme.image.url %>' />
+<div class='meme'>
+  <h1><%= @meme.name %></h1>
+  <a href='<%= @meme.image.url %>'>
+    <img src='<%= @meme.image.url %>' />
+  </a>
+</div>

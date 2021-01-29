@@ -1,6 +1,7 @@
 <!DOCTYPE html>
   <head>
     <title>Meme Generator</title>
+    <link rel="stylesheet" type="text/css" href="/css/sakura.css" />
     <link rel="stylesheet" type="text/css" href="/css/app.css" />
   </head>
   <body>
@@ -11,15 +12,17 @@
           <span class=flash-content><%= flash[name] %></span>
         </div>
       <% end %>
-      <% if signed_in? %>
-        <a href='/signout'>Sign out</a>
-      <% else %>
-        <a href='/signup'>Sign up</a>
-        <a href='/signin'>Sign in</a>
-      <% end %>
-      <% if signed_in? %>
-        <a href='/users/<%= current_user.id %>'>Account</a>
-      <% end %>
+      <nav>
+        <% if signed_in? %>
+          <a href='/signout'>Sign out</a>
+        <% else %>
+          <a href='/signup'>Sign up</a>
+          <a href='/signin'>Sign in</a>
+        <% end %>
+        <% if signed_in? %>
+          <a href='/users/<%= current_user.id %>'>Account</a>
+        <% end %>
+      </nav>
       <%= yield %>
     </div>
   </body>
