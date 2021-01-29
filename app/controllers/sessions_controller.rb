@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'Success: Your account has been created'
       redirect '/signin'
     else
-      flash[:signup_error] = 'Error: Failed to create user'
+      flash[:error] = 'Error: Failed to create user'
       redirect '/signup'
     end
   end

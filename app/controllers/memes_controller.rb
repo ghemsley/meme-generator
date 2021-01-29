@@ -2,9 +2,9 @@ require './config/environment'
 
 class MemesController < ApplicationController
   get '/memes/new' do
-    if session[:user_id]
-      user = User.find_by_id(session[:user_id])
-      if user
+    if signed_in?
+      @user = current_user
+      if @user
         erb :'memes/new'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
