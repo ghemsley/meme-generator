@@ -7,7 +7,7 @@
     <div id='layout' class='layout'>
       <% flash.keys.each do |name| %>
         <div class="flash flash-<%= name.to_s %>">
-          <span class="flash-close-button" onclick="this.parentElement.style.display='none';">&times;</span>
+          <span class="flash-close-button" onclick="this.parentElement.remove()">&times;</span>
           <span class=flash-content><%= flash[name] %></span>
         </div>
       <% end %>
@@ -18,11 +18,19 @@
         <a href='/signin'>Sign in</a>
       <% end %>
       <% if signed_in? %>
-        <a href='/users'<%= current_user.id %>'>Account</a>
+        <a href='/users/<%= current_user.id %>'>Account</a>
       <% end %>
       <%= yield %>
     </div>
   </body>
+  <script>
+    var flash = document.querySelector('.flash')
+    if (flash != null) {
+      setTimeout(() => {
+        flash.remove()
+      }, 3500);
+    }
+  </script>
   <%= js_custom %>
   <%= js_custom_files %>
 </html>
