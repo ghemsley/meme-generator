@@ -18,10 +18,11 @@
         <a href='/signin'>Sign in</a>
       <% end %>
       <% if signed_in? %>
-        <a href='/users/<%= current_user.id %>'>Account</a>
+        <a href='/users'<%= current_user.id %>'>Account</a>
       <% end %>
       <%= yield %>
     </div>
   </body>
   <%= js_custom %>
+  <%= js_custom_files %>
 </html>

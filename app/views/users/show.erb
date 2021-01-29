@@ -5,13 +5,12 @@
   <% if !@memes&.empty? %>
     <% @memes.each do |meme| %>
       <h3>Name: <%= meme.name %></h3>
-      <p><%= meme.top_caption %></p>
-      <p><%=  meme.bottom_caption %></p>
+      <img src='<%= meme.image.url %>'>
       <p>Created: <%=  meme.created_at %></p>
       <p>Updated: <%=  meme.updated_at %></p>
     <% end %>
   <% else %>
     <p>You have no memes to display</p>
   <% end %>
-  <a href='/memes/create'>Create a new meme</a>
+  <a href='/memes/new'>Create a new meme</a>
 </div>
