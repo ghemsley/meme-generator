@@ -42,13 +42,13 @@ global.formSubmit = (event) => {
         .then((response) => {
           return response.blob()
         })
-        .then((file) => {
-          console.log(file)
+        .then((file2) => {
           const formData = new FormData()
           formData.append('meme[name]', name)
           formData.append('meme[top_caption]', topCaption)
           formData.append('meme[bottom_caption]', bottomCaption)
-          formData.append('meme[image]', file, name + '.png')
+          formData.append('meme[image]', file2, name + '.png')
+          // formData.append('meme[original_image]', file, name + '_original.png')
           fetch('/memes', {
             method: 'POST',
             body: formData

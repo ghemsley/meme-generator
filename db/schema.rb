@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 2021_01_26_171314) do
     t.string "name", null: false
     t.string "top_caption", null: false
     t.string "bottom_caption", null: false
-    t.string "image"
+    t.string "image", null: false
+    t.string "original_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_memes_on_user_id"
