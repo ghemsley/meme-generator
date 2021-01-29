@@ -3,11 +3,5 @@
   <% @memes.each do |meme| %>
     <h2 class='meme-name'><%= meme.name %></h2>
     <img class='meme-image' src='<%= meme.image.url %>' />
+  <% end %>
 </div>
-
-<% js_custom_add("
-  imgArray = document.querySelectorAll('.meme-image')
-  imgArray.map(meme => {
-
-  })
-") %>
