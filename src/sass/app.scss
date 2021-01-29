@@ -1,15 +1,15 @@
 @keyframes wait {
   from {
-    opacity: 100%;
+    opacity: 90%;
   }
   to {
-    opacity: 100%;
+    opacity: 90%;
   }
 }
 
 @keyframes fade {
   from {
-    opacity: 100%;
+    opacity: 90%;
   }
   to {
     opacity: 0%;
@@ -26,6 +26,7 @@ body {
   background: #d8ebf2;
   font-family: Nunito, 'Nunito', -apple-system, BlinkMacSystemFont, 'Noto Sans',
     'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  min-height: 100vh;
 }
 
 ul {
@@ -50,47 +51,105 @@ ul {
   margin-bottom: 0px;
 }
 
-.layout {
-  width: 100%;
+nav {
+  padding-bottom: 1.5em;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  gap: 32px;
+  a {
+    div {
+      background: #0588a6;
+      margin: 0px;
+      padding: 0.333em;
+      padding-left: 1em;
+      padding-right: 1em;
+      color: white;
+      max-width: max-content;
+      border-radius: 4px;
+      height: max-content;
+      box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.12),
+        1px 6px 10px rgba(39, 44, 49, 0.06);
+      &:hover {
+        transform: scale(1.05);
+        transition: all ease 250ms;
+        box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
+          1px 6px 10px rgba(39, 44, 49, 0.12);
+        color: white;
+        background: #00afd7;
+      }
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  box-sizing: border-box;
+  background: #153259;
+  color: white;
+  left: 0px;
+  width: 100vw;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .flash {
+  z-index: 1000;
   animation: 3s ease-out 0s 1 wait, 0.5s ease-out 3s 1 fade;
+  backdrop-filter: blur(6px);
   opacity: 0%;
   position: absolute;
-  top: 5%;
-  left: 0;
-  right: 0;
+  top: 12.5vh;
+  left: 0px;
+  right: 0px;
   margin: auto;
   text-align: center;
   max-width: max-content;
   color: white;
   background-color: gray;
   border-radius: 6px;
-  padding-top: 24px;
-  padding-bottom: 40px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   padding-left: 48px;
   padding-right: 48px;
   box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
     1px 6px 10px rgba(39, 44, 49, 0.12);
   .flash-close-button {
+    opacity: inherit;
+    backdrop-filter: blur(6px);
+    transition: 100ms all;
     position: relative;
-    top: -16px;
-    right: -106%;
-    color: black !important;
-    transform: scale(2);
-    background: white !important;
+    top: -12px;
+    right: -102.5%;
+    color: black;
+    background: white;
     border-radius: 6px;
-    padding: 8px;
-    padding-top: 2px;
-    padding-bottom: 4px;
-    margin-right: -32px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    margin-right: -48px;
     text-decoration: none;
+    max-width: min-content;
+    max-height: min-content;
+    transform: scale(0.9);
+    &:hover,
+    &:focus {
+      color: white;
+      background-color: orangered;
+    }
   }
   .flash-content {
     position: relative;
-    top: 8px;
+    top: -16px;
   }
 }
 
@@ -107,35 +166,51 @@ ul {
 }
 
 .form-container {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  margin-top: 1.5em;
   form {
     display: flex;
     flex-direction: column;
     max-width: fit-content;
-      margin: 0 auto;
-
+    margin: 0 auto;
+    transform: scale(1.5);
     .text-input {
-      width: 10em;
+      width: 100%;
     }
     label {
       input {
       }
     }
+    .submit-button,
     .file-upload {
-      width: fit-content;
-    }
-    .submit-button {
-        margin: 0 auto;
-
-      width: fit-content;
+      transition: 250ms all;
+      &:hover,
+      &:focus {
+        transform: scale(1.025);
+      }
     }
   }
 }
 
-.image-container {
+.outer-container {
+  margin: 0px;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  margin: auto;
+  padding: 0px;
+}
+
+.save-button {
+  margin-top: 1em;
+}
+
+.inner-container {
   position: relative;
   text-align: center;
-  max-width: fit-content;
-  max-height: fit-content;
+  height: fit-content;
   img {
     width: 100%;
     height: 100%;
@@ -164,15 +239,18 @@ ul {
   }
 
   .bottom-caption {
-    top: -2em;
+    top: -3em;
   }
 }
 
 .memes-container {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   column-gap: 32px;
   row-gap: 32px;
+  flex-wrap: wrap;
+  flex-basis: 480px;
+  flex-grow: 1;
+  flex-shrink: 0;
   margin: 1em;
   text-align: center;
   place-items: center;
@@ -191,7 +269,7 @@ ul {
         transition: all ease 250ms;
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.48),
           1px 6px 10px rgba(39, 44, 49, 0.24);
-        transform: scale(1.05);
+        transform: scale(1.025);
       }
 
       h2 {
@@ -220,4 +298,8 @@ ul {
   .memes-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.link {
+  
 }

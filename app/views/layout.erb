@@ -6,23 +6,34 @@
   </head>
   <body>
     <div id='layout' class='layout'>
+      <div class='header'>
+        <h1>Meme Generator</h1>
+        <nav>
+          <% if signed_in? %>
+            <a href='/signout'>
+              <div>Sign out</div>
+            </a>
+          <% else %>
+            <a href='/signup'>  
+              <div>Sign up</div>
+            </a>
+            <a href='/signin'>
+              <div>Sign in</div>
+            </a>
+          <% end %>
+          <% if signed_in? %>
+            <a href='/users/<%= current_user.id %>'>
+              <div>Account</div>
+            </a>
+          <% end %>
+        </nav>
+      </div>
       <% flash.keys.each do |name| %>
         <div class="flash flash-<%= name.to_s %>">
-          <span class="flash-close-button" onclick="this.parentElement.remove()">&times;</span>
+          <div class="flash-close-button" onclick="this.parentElement.remove()">&times;</div>
           <span class=flash-content><%= flash[name] %></span>
         </div>
       <% end %>
-      <nav>
-        <% if signed_in? %>
-          <a href='/signout'>Sign out</a>
-        <% else %>
-          <a href='/signup'>Sign up</a>
-          <a href='/signin'>Sign in</a>
-        <% end %>
-        <% if signed_in? %>
-          <a href='/users/<%= current_user.id %>'>Account</a>
-        <% end %>
-      </nav>
       <%= yield %>
     </div>
   </body>

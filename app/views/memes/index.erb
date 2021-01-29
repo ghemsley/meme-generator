@@ -1,11 +1,11 @@
 <h1>Memes</h1>
 <div class='memes-container'>
   <% @memes.each do |meme| %>
-    <a href='/memes/<%= meme.id %>' class='meme-link'>
-      <div class='meme'>
-        <h2 class='meme-name'><%= meme.name %></h2>
-        <img class='meme-image' src='<%= meme.image.url %>' />
-      </div>
-    </a>
+  <a href='/memes/<%= meme.id %>' class='meme-link'>
+    <div class='meme'>
+      <h2 class='meme-name'><%= meme.name %></h2>
+      <img class='meme-image' src='<%= meme.image.url %>' />
+    </div>
+  </a>
   <% end %>
 </div>

@@ -3,16 +3,20 @@
   <h2>Username: <%= @user.username %></h2>
 </div>
 <h2>Memes</h2>
+<a href='/memes/new'>Create a new meme</a>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
     <% @memes.each do |meme| %>
-      <h3>Name: <%= meme.name %></h3>
-      <img src='<%= meme.image.url %>'>
-      <p>Created: <%=  meme.created_at %></p>
-      <p>Updated: <%=  meme.updated_at %></p>
+      <a href='/memes/<%= meme.id %>' class='meme-link'>
+        <div class='meme'>
+          <h2>Name: <%= meme.name %></h3>
+          <img src='<%= meme.image.url %>'>
+          <p>Created: <%=  meme.created_at %></p>
+          <p>Updated: <%=  meme.updated_at %></p>
+        </div>
+      </a>
     <% end %>
   </div>
 <% else %>
   <p>You have no memes to display</p>
 <% end %>
-<a href='/memes/new'>Create a new meme</a>
