@@ -1,11 +1,11 @@
 require './config/environment'
 
-class MemeController < ApplicationController
-  get '/memes/create' do
+class MemesController < ApplicationController
+  get '/memes/new' do
     if session[:user_id]
       user = User.find_by_id(session[:user_id])
       if user
-        erb :'memes/create'
+        erb :'memes/new'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
         redirect '/signin'
@@ -16,7 +16,7 @@ class MemeController < ApplicationController
     end
   end
 
-  post '/memes/create' do
+  post '/memes' do
     if session[:user_id]
       user_id = session[:user_id]
       user = User.find_by_id(user_id)
@@ -24,20 +24,15 @@ class MemeController < ApplicationController
         name = params[:meme][:name]
         top_caption = params[:meme][:top_caption]
         bottom_caption = params[:meme][:bottom_caption]
-        kit = IMGKit.new(params[:meme][:html])
-        kit.stylesheets << './public/css/app.css'
-        file = Tempfile.new(params[:meme][:name].gsub(' ', '').to_s, '/tmp', encoding: 'ascii-8bit')
-        file.write(kit.to_jpg)
-        file.flush
+        image = params[:meme][:image]
         meme = Meme.new
         meme.user_id = user.id
         meme.name = name
         meme.top_caption = top_caption
         meme.bottom_caption = bottom_caption
-        meme.image = file
+        meme.image = image
         if meme.save
           flash[:success] = 'Success: Created a new meme!'
-          file.unlink
           redirect "/memes/#{meme.id}"
         else
           flash[:error] = 'Error: Failed to create meme'
@@ -58,6 +53,6 @@ class MemeController < ApplicationController
 
   get '/memes' do
     @memes = Meme.all
-    erb :'memes/list'
+    erb :'memes/index'
   end
 end

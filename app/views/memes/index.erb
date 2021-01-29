@@ -2,7 +2,7 @@
 <div class='memes-container'>
   <% @memes.each do |meme| %>
     <h2 class='meme-name'><%= meme.name %></h2>
-    <img class='meme-image'/>
+    <img class='meme-image' src='<%= meme.image.url %>' />
 </div>
 
 <% js_custom_add("

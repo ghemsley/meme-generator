@@ -1,6 +1,6 @@
 require './config/environment'
 
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   get '/signup' do
     erb :'sessions/signup'
   end

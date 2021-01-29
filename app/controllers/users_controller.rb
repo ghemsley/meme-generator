@@ -1,5 +1,5 @@
 require './config/environment'
-class UserController < ApplicationController
+class UsersController < ApplicationController
   get '/users/:id' do
     if session[:user_id] == params[:id].to_i
       @user ||= User.find_by_id(session[:user_id])
