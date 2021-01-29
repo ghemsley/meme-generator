@@ -1,11 +1,15 @@
 <h1>Account</h1>
 <div class='users-container'>
   <h2><%= @user.username %></h2>
+  <div class='user-links'>
+    <a href='/memes/new' class='link'>
+      <p class='user-link'>Create a new meme</p>
+    </a>
+    <a href='/users/<%= @user.id %>/memes' class='link'>
+      <p class='user-link'>View my saved memes</p>
+    </a>
+    <a href='/users/<%= @user.id %>/edit' class='link'>
+      <p class='user-link'>Edit my account</p>
+    </a>
+  </div>
 </div>
-<h2>Memes</h2>
-<a href='/memes/new' class='link'>
-  <div>Create a new meme</div>
-</a>
-<a href='/users/<%= @user.id %>/memes' class='link'>
-  <div>View my saved memes</div>
-</a>
