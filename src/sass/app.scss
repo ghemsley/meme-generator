@@ -388,11 +388,13 @@ nav {
   }
 
   .top-caption {
-    margin-bottom: -3em;
+    vertical-align: top;
+    margin-bottom: -2em;
   }
 
   .bottom-caption {
-    margin-top: -3em;
+    vertical-align: bottom;
+    margin-top: -2em;
   }
 }
 

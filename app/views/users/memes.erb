@@ -6,10 +6,6 @@
         <div class='meme'>
           <h2 class='meme-name'><%= meme.name %></h3>
           <img src='<%= meme.image.url %>' class='meme-image' />
-          <p>Created: <%=  meme.created_at.localtime.to_formatted_s(:short) %></p>
-          <% if meme.updated_at.to_i > meme.created_at.to_i %>
-            <p>Updated: <%=  meme.updated_at.localtime.to_formatted_s(:short) %></p>
-          <% end %>
         </div>
       </a>
     <% end %>
