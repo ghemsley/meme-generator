@@ -9,6 +9,7 @@ class UsersController < ApplicationController
           erb :'users/meme'
         else
           flash[:error] = "Error: Failed to find meme with id #{params[:meme_id]}"
+          redirect "/users/#{@user.id}/memes"
         end
       else
         flash[:error] = "Error: Failed to find user with id #{params[:user_id]}"

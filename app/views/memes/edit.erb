@@ -1,10 +1,10 @@
 <% js_custom_add("
-var user_id = '#{@user.id}'
-var meme_id = '#{@meme.id}'
-var originalImageSrc = '#{@meme.original_image.url}'
-var originalName = '#{@meme.name}'
-var originalTopCaption = '#{@meme.top_caption}'
-var originalBottomCaption = '#{@meme.bottom_caption}'
+var user_id = #{@user.id}
+var meme_id = #{@meme.id}
+var originalImageSrc = \"#{@meme.original_image.url}\"
+var originalName = \"#{@meme.name}\"
+var originalTopCaption = \"#{@meme.top_caption}\"
+var originalBottomCaption = \"#{@meme.bottom_caption}\"
 ")%>
 <% js_custom_add_file('js/editDomToImage.bundle.js') %>
 <h1>Editing '<%= @meme.name %>'</h1>
