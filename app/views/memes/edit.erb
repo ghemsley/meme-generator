@@ -1,0 +1,14 @@
+<% js_custom_add("var originalImageSrc = '#{@meme.original_image.url}'")%>
+<h1>Editing '<%= @meme.name %>'</h1>
+<h2>Original meme</h2>
+<img src='<%= @meme.image.url %>'/>
+<h2>Edit</h2>
+<div class='form-container'>
+  <form enctype="multipart/form-data" id='meme-form' onSubmit='return formSubmit(event)'>
+    <input type='text' name='meme[name]' placeholder='<%= @meme.name %>' id='name' class='text-input' required >
+    <input type='text' name='meme[top_caption]' placeholder='<%= @meme.top_caption %>' id='top-caption' class='text-input' required >
+    <input type='text' name='meme[bottom_caption]' placeholder='<%= @meme.bottom_caption %>' id='bottom-caption' class='text-input' required >
+    <input type='file' accept='image/*' name='meme[image]' id='image-upload' class='image-upload' >
+    <button onclick="return buttonSubmit()" class='create-button'>Save changes</button>
+  </form>
+</div>
