@@ -115,4 +115,31 @@ class UsersController < ApplicationController
       redirect '/signin'
     end
   end
+
+  delete '/users/:id' do
+    if session[:user_id] == params[:id].to_i
+      user = current_user
+      if user
+        if params[:user][:password] && user.authenticate(params[:user][:password])
+          if user.destroy
+            session.delete(:user_id)
+            flash[:success] = 'Success: deleted account!'
+            redirect '/signup'
+          else
+            flash[:error] = 'Error: Failed to delete account'
+            redirect "/users/#{user.id}/edit"
+          end
+        else
+          flash[:error] = 'Error: Failed to authenticate'
+          redirect "/users/#{user.id}/edit"
+        end
+      else
+        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        redirect '/signin'
+      end
+    else
+      flash[:error] = 'Error: Insufficent authorization to view this page'
+      redirect '/signin'
+    end
+  end
 end

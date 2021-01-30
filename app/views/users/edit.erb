@@ -8,3 +8,11 @@
     <input type='submit' class='submit-button' value='Submit'>
   </form>
 </div>
+<h2>Delete account</h2>
+<div class='form-container'>
+  <form action='/users/<%= @user.id %>' method='POST'>
+    <input type='hidden' name='_method' value='DELETE'>
+    <input type='password' name='user[password]' placeholder='Password' id='password' class='text-input' required >
+    <input type='submit' class='submit-button delete-button' value='Delete account'>
+  </form>
+</div>

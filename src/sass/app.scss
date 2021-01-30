@@ -616,3 +616,10 @@ form {
   vertical-align: middle;
   align-items: baseline;
 }
+
+.delete-button {
+  background-color: #982c61 !important;
+  &:hover {
+    background-color: #c41268 !important;
+  }
+}
