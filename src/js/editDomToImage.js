@@ -24,22 +24,58 @@ bottomCaptionP.className = 'bottom-caption'
 global.formSubmit = (event) => {
   event.preventDefault()
   button.style = { display: 'inline-block' }
-  name = event.target[0].value
-  topCaption = event.target[1].value
-  bottomCaption = event.target[2].value
 
-  if (event.target[3].files[0] != null && event.target[3].files[0] != 'undefined') {
+  if (
+    event.target[0].value != null &&
+    event.target[0].value != undefined &&
+    event.target[0].value != ''
+  ) {
+    name = event.target[0].value
+  } else {
+    name = originalName
+  }
+  if (
+    event.target[1].value != null &&
+    event.target[1].value != undefined &&
+    event.target[1].value != ''
+  ) {
+    topCaption = event.target[1].value
+  } else {
+    topCaption = originalTopCaption
+  }
+  if (
+    event.target[2].value != null &&
+    event.target[2].value != undefined &&
+    event.target[2].value != ''
+  ) {
+    bottomCaption = event.target[2].value
+  } else {
+    bottomCaption = originalBottomCaption
+  }
+
+  if (
+    event.target[3].files[0] != null &&
+    event.target[3].files[0] != undefined
+  ) {
     reader.addEventListener('load', (event) => {
       image.src = event.target.result
     })
     file = event.target[3].files[0]
     reader.readAsDataURL(file)
   } else {
-    reader.addEventListener('load', (event) => {
-      image.src = originalImageSrc
+    fetch(originalImageSrc).then((result) => {
+      result
+        .blob()
+        .then((blob) => {
+          reader.addEventListener('load', (event) => {
+            image.src = event.target.result
+          })
+          reader.readAsDataURL(blob)
+        })
+        .then((result) => {
+          image.src = result
+        })
     })
-    file = event.target[3].files[0]
-    reader.readAsDataURL(file)
   }
 
   topCaptionP.innerHTML = topCaption
@@ -53,13 +89,11 @@ global.formSubmit = (event) => {
 }
 
 global.buttonSubmit = () => {
-  domtoimage.toPng(innerContainer).then(function (dataUrl) {
-    console.log(dataUrl)
+  domtoimage.toPng(innerContainer).then(function (dataUrl2) {
     var image2 = new Image()
-    image2.src = dataUrl
-    fetch(dataUrl)
+    image2.src = dataUrl2
+    fetch(dataUrl2)
       .then((response) => {
-        console.log(response)
         return response.blob()
       })
       .then((file2) => {
@@ -72,11 +106,10 @@ global.buttonSubmit = () => {
           file2,
           name + `.${file2.type.split('/').pop()}`
         )
-        fetch('/memes', {
+        fetch(`/memes/${meme_id}`, {
           method: 'PATCH',
           body: formData
         })
-          .then((response) => console.log(response))
           .then(() => {
             window.location.href = `/users/${user_id}/memes`
           })

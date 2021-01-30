@@ -70,7 +70,6 @@ global.buttonSubmit = () => {
           method: 'POST',
           body: formData
         })
-          .then((response) => console.log(response))
           .then(() => {
             window.location.href = `/users/${user_id}/memes`
           })
