@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "meme_id"
+    t.integer "user_id"
     t.integer "number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["meme_id"], name: "index_ratings_on_meme_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +55,5 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
   add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "memes", "users", on_delete: :cascade
   add_foreign_key "ratings", "memes", on_delete: :cascade
+  add_foreign_key "ratings", "users", on_delete: :cascade
 end

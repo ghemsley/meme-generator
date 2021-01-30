@@ -1,3 +1,4 @@
+require './config/environment'
 require_relative '../uploader/image_uploader'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
