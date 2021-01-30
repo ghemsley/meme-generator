@@ -47,6 +47,27 @@ class MemesController < ApplicationController
     end
   end
 
+  get '/memes/:id/edit' do
+    if signed_in?
+      @user = current_user
+      if @user
+        @meme = Meme.find_by_id(params[:id])
+        if @meme
+          erb :"memes/edit"
+        else
+          flash[:error] = "Error: failed to find meme with id #{params[:id]}"
+          redirect "/users/#{@user.id}"
+        end
+      else
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/signin'
+      end
+    else
+      flash[:error] = 'Error: You are not signed in'
+      redirect '/signin'
+    end
+  end
+
   get '/memes/:id' do
     @meme = Meme.find_by_id(params[:id])
     erb :"memes/show"
