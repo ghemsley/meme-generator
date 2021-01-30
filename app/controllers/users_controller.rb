@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Success: Your account has been created!'
       redirect '/signin'
     else
-      flash[:error] = 'Error: Failed to create user'
+      flash[:error] = 'Error: Failed to create user, please try a different username'
       redirect '/signup'
     end
   end
