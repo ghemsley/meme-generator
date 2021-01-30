@@ -91,7 +91,6 @@ class MemesController < ApplicationController
             meme.image = params[:meme][:image] if params[:meme][:image]
             if meme.save
               flash[:success] = 'Success: Edits were saved!'
-              redirect "/users/#{user.id}/memes/#{meme.id}"
             else
               flash[:error] = 'Error: Failed to save edits'
               redirect "/memes/#{meme.id}/edit"
