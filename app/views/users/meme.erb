@@ -1,0 +1,7 @@
+ <div class='meme'>
+  <h1><%= @meme.name %></h1>
+  <a href='<%= @meme.image.url %>'>
+    <img src='<%= @meme.image.url %>' />
+  </a>
+  <a href='/users/<%= @user.id %>/memes/<%= @meme.id %>' class='edit-link'>Edit</a>
+</div>
