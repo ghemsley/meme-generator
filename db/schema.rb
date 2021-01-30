@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_171314) do
+ActiveRecord::Schema.define(version: 2021_01_30_205200) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "meme_id"
+    t.integer "user_id"
+    t.text "text", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meme_id"], name: "index_comments_on_meme_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "memes", force: :cascade do |t|
     t.integer "user_id"
@@ -39,6 +49,8 @@ ActiveRecord::Schema.define(version: 2021_01_26_171314) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "memes", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "memes", "users", on_delete: :cascade
   add_foreign_key "ratings", "memes", on_delete: :cascade
 end

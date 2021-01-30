@@ -5,5 +5,5 @@ class Rating < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :meme_id, presence: true
-  validates :number, presence: true, inclusion: { in: 0..10 }
+  validates :text, presence: true
 end
