@@ -1,4 +1,5 @@
 <% js_custom_add("var originalImageSrc = '#{@meme.original_image.url}'")%>
+<% js_custom_add_file('js/editDomToImage.bundle.js') %>
 <h1>Editing '<%= @meme.name %>'</h1>
 <h2>Original meme</h2>
 <img src='<%= @meme.image.url %>'/>
@@ -9,6 +10,7 @@
     <input type='text' name='meme[top_caption]' placeholder='<%= @meme.top_caption %>' id='top-caption' class='text-input' required >
     <input type='text' name='meme[bottom_caption]' placeholder='<%= @meme.bottom_caption %>' id='bottom-caption' class='text-input' required >
     <input type='file' accept='image/*' name='meme[image]' id='image-upload' class='image-upload' >
-    <button onclick="return buttonSubmit()" class='create-button'>Save changes</button>
+    <input type='submit' value='Generate' class='submit-button'>
+    <button onclick="return buttonSubmit()" sfyle='display: none;' class='create-button'>Save changes</button>
   </form>
 </div>
