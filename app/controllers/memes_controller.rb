@@ -113,6 +113,33 @@ class MemesController < ApplicationController
     end
   end
 
+  delete '/memes/:id' do
+    if signed_in?
+      user = current_user
+      if user
+        meme = Meme.find_by_id(params[:id])
+        if meme
+          if meme.destroy
+            flash[:success] = 'Success: Deleted meme!'
+            redirect "/users/#{user.id}/memes"
+          else
+            flash[:error] = 'Error: Failed to delete meme'
+            redirect "/users/#{user.id}/memes/#{meme.id}"
+          end
+        else
+          flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
+          redirect "/users/#{user.id}/memes"
+        end
+      else
+        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        redirect '/signin'
+      end
+    else
+      flash[:error] = 'Error: You are not signed in'
+      redirect '/signin'
+    end
+  end
+
   get '/memes' do
     @memes = Meme.all
     erb :'memes/index'
