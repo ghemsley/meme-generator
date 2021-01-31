@@ -11,7 +11,7 @@ class Meme < ActiveRecord::Base
   mount_uploader :original_image, ImageUploader
 
   validates :user_id, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :image, presence: true
   validates :top_caption, presence: true
   validates :bottom_caption, presence: true
