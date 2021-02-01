@@ -14,7 +14,6 @@ gem 'sinatra-contrib', require: false
 gem 'sinatra-flash', require: false
 gem 'sinatra-js'
 gem 'tux'
-gem 'wkhtmltoimage-binary'
 
 group :development do
   gem 'pry'
