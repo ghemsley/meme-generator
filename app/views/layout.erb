@@ -3,12 +3,19 @@
     <title>Meme Generator</title>
     <link rel="stylesheet" type="text/css" href="/css/sakura.css" />
     <link rel="stylesheet" type="text/css" href="/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="/css/tiny-slider.css" />
   </head>
   <body>
     <div id='layout' class='layout'>
       <div class='header'>
         <h1>Meme Generator</h1>
         <nav>
+          <a href='/'>
+            <div>Home</div>
+          </a>
+          <a href='/memes'>
+            <div>Memes</div>
+          </a>
           <% if signed_in? %>
             <a href='/signout'>
               <div>Sign out</div>

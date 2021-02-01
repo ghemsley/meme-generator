@@ -22,6 +22,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    latest_count = [Meme.all.size, 9].min
+    @memes ||= Meme.last(latest_count)
     erb :index
   end
 

@@ -1,1 +1,17 @@
+<% js_custom_add_file('js/tinySlider.bundle.js') %>
 <h1>Home</h1>
+<h2>Latest memes<h2>
+<% if !@memes&.empty? %>
+  <div class='slider'>
+    <% @memes.each do |meme| %>
+      <a href='/memes/<%= meme.id %>' class='meme-link'>
+        <div class='meme slider-meme'>
+          <h2 class='meme-name'><%= meme.name %></h2>
+          <img class='meme-image' src='<%= meme.image.url %>' />
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% else %>
+  <p>No memes have been created yet. Sign up and create one!</p>
+<% end %>
