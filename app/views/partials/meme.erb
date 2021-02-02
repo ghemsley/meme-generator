@@ -1,0 +1,7 @@
+<% meme = @meme if @meme %>
+<div class='meme'>
+  <h2 class='meme-name'><%= meme.name %></h2>
+  <a class='meme-image-link' href='<%= meme.image.url %>'>
+    <img class='meme-image' src='<%= meme.image.url %>'/>
+  </a>
+</div>
