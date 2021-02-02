@@ -14,7 +14,6 @@ document.addEventListener(
       controlsPosition: 'bottom',
       arrowKeys: true,
       nav: false,
-      navPosition: 'bottom',
       autoplayButton: false,
     })
   },

@@ -276,7 +276,8 @@ nav {
   form {
     display: flex;
     flex-direction: column;
-    max-width: fit-content;
+    min-width: 20em;
+    width: fit-content;
     margin: 0 auto;
     input {
       font-size: larger;
@@ -636,5 +637,23 @@ form {
   margin-bottom: 32px;
   &:hover {
     transform: scale(1.025);
+  }
+}
+
+div.tns-controls {
+  button {
+    padding: 12px;
+    border-radius: 6px;
+    font-size: large;
+    margin-left: 16px;
+    margin-right: 16px;
+    box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.12),
+      1px 6px 10px rgba(39, 44, 49, 0.06);
+      border: none;
+    &:hover {
+      transform: scale(1.06);
+      box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.24),
+        1px 6px 10px rgba(39, 44, 49, 0.12);
+    }
   }
 }

@@ -436,7 +436,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var tiny_slider_src_tiny_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-slider/src/tiny-slider */ \"./node_modules/tiny-slider/src/tiny-slider.js\");\n\n\ndocument.addEventListener(\n  'DOMContentLoaded',\n  () => {\n    var slider = (0,tiny_slider_src_tiny_slider__WEBPACK_IMPORTED_MODULE_0__.tns)({\n      container: '.slider',\n      items: 3,\n      slideBy: 1,\n      autoWidth: true,\n      gutter: 16,\n      slideBy: 1,\n      center: true,\n      controlsPosition: 'bottom',\n      arrowKeys: true,\n      nav: false,\n      navPosition: 'bottom',\n      autoplayButton: false,\n    })\n  },\n  false\n)\n\n\n//# sourceURL=webpack://MemeGenerator/./src/js/tinySlider.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var tiny_slider_src_tiny_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-slider/src/tiny-slider */ \"./node_modules/tiny-slider/src/tiny-slider.js\");\n\n\ndocument.addEventListener(\n  'DOMContentLoaded',\n  () => {\n    var slider = (0,tiny_slider_src_tiny_slider__WEBPACK_IMPORTED_MODULE_0__.tns)({\n      container: '.slider',\n      items: 3,\n      slideBy: 1,\n      autoWidth: true,\n      gutter: 16,\n      slideBy: 1,\n      center: true,\n      controlsPosition: 'bottom',\n      arrowKeys: true,\n      nav: false,\n      autoplayButton: false,\n    })\n  },\n  false\n)\n\n\n//# sourceURL=webpack://MemeGenerator/./src/js/tinySlider.js?");
 
 /***/ })
 
