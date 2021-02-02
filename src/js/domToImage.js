@@ -1,12 +1,12 @@
 import domtoimage from 'dom-to-image-more'
+import { modal } from 'tingle.js'
+import 'tingle.js/dist/tingle.min.css'
 
 var outerContainer = document.createElement('div')
 var innerContainer = document.createElement('div')
 var image = document.createElement('img')
 var topCaptionP = document.createElement('p')
 var bottomCaptionP = document.createElement('p')
-
-var button = document.querySelector('.create-button')
 
 var reader = new FileReader()
 reader.addEventListener('load', (event) => {
@@ -22,10 +22,20 @@ innerContainer.className = 'inner-container'
 image.className = 'meme-image'
 topCaptionP.className = 'top-caption'
 bottomCaptionP.className = 'bottom-caption'
+innerContainer.style = { background: 'transparent' }
+
+var memeModal = new modal({
+  footer: true,
+  closeMethods: ['overlay', 'button', 'escape'],
+  closeLabel: 'Close'
+})
+
+memeModal.addFooterBtn('Save to account', 'create-button', () => {
+  buttonSubmit()
+})
 
 global.formSubmit = (event) => {
   event.preventDefault()
-  button.style = { display: 'inline block' }
   name = event.target[0].value
   topCaption = event.target[1].value
   bottomCaption = event.target[2].value
@@ -33,11 +43,13 @@ global.formSubmit = (event) => {
   reader.readAsDataURL(file)
   topCaptionP.innerHTML = topCaption
   bottomCaptionP.innerHTML = bottomCaption
+
   innerContainer.appendChild(topCaptionP)
   innerContainer.appendChild(image)
   innerContainer.appendChild(bottomCaptionP)
   outerContainer.appendChild(innerContainer)
-  document.querySelector('.layout').appendChild(outerContainer)
+  memeModal.setContent(outerContainer)
+  memeModal.open()
   return false
 }
 
@@ -48,7 +60,6 @@ global.buttonSubmit = () => {
     image2.src = dataUrl
     fetch(dataUrl)
       .then((response) => {
-        console.log(response)
         return response.blob()
       })
       .then((file2) => {

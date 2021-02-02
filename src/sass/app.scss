@@ -310,39 +310,47 @@ nav {
 }
 
 .outer-container {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   width: fit-content;
   height: fit-content;
   text-align: center;
   margin: auto;
-  margin-top: 3em;
   padding: 0px;
-  max-height: 960px;
 }
 
 .inner-container {
   position: relative;
   text-align: center;
   vertical-align: middle;
-  padding-top: 1.4em;
-  padding-bottom: 0.8em;
-  max-width: 960px;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 0px;
+  padding: 0px;
+  line-height: 0em;
   img {
-    min-height: 540px;
-    min-width: 960px;
+    min-width: 800px;
+    height: auto;
     padding: 0px;
     margin: 0px;
   }
   p {
-    position: relative;
+    position: absolute;
     text-align: center;
     max-width: 100%;
-    margin: 0px;
-    padding: 16px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    word-wrap: normal;
-    left: 0%;
-    right: 0%;
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+    left: 0;
+    right: 0;
+    line-height: 1em;
     font-family: Impact;
     font-size: 3em;
     text-transform: uppercase;
@@ -354,11 +362,11 @@ nav {
   }
 
   .top-caption {
-    margin-bottom: -3em;
+    top: 8px;
   }
 
   .bottom-caption {
-    margin-top: -3em;
+    bottom: 8px;
   }
 }
 
@@ -600,5 +608,33 @@ form {
   background-color: #982c61 !important;
   &:hover {
     background-color: #c41268 !important;
+  }
+}
+
+.tingle-modal-box {
+  background: transparent !important;
+  width: 100% !important;
+  .tingle-modal-box__footer {
+    text-align: center;
+    background-color: transparent;
+    .create-button {
+      padding: 16px;
+      border-radius: 6px;
+      font-size: larger;
+    }
+  }
+}
+
+.editing-original-text {
+  padding: 0px;
+  margin: auto;
+}
+
+.tns-horizontal.tns-subpixel > .tns-item {
+  vertical-align: middle !important;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  &:hover {
+    transform: scale(1.025);
   }
 }

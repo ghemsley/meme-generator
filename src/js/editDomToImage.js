@@ -1,12 +1,12 @@
 import domtoimage from 'dom-to-image-more'
+import { modal } from 'tingle.js'
+import 'tingle.js/dist/tingle.min.css'
 
 var outerContainer = document.createElement('div')
 var innerContainer = document.createElement('div')
 var image = document.createElement('img')
 var topCaptionP = document.createElement('p')
 var bottomCaptionP = document.createElement('p')
-
-var button = document.querySelector('.create-button')
 
 var reader = new FileReader()
 
@@ -21,10 +21,18 @@ image.className = 'meme-image'
 topCaptionP.className = 'top-caption'
 bottomCaptionP.className = 'bottom-caption'
 
+var memeModal = new modal({
+  footer: true,
+  closeMethods: ['overlay', 'button', 'escape'],
+  closeLabel: 'Close'
+})
+
+memeModal.addFooterBtn('Save to account', 'create-button', () => {
+  buttonSubmit()
+})
+
 global.formSubmit = (event) => {
   event.preventDefault()
-  button.style = { display: 'inline-block' }
-
   if (
     event.target[0].value != null &&
     event.target[0].value != undefined &&
@@ -84,7 +92,8 @@ global.formSubmit = (event) => {
   innerContainer.appendChild(image)
   innerContainer.appendChild(bottomCaptionP)
   outerContainer.appendChild(innerContainer)
-  document.querySelector('.layout').appendChild(outerContainer)
+  memeModal.setContent(outerContainer)
+  memeModal.open()
   return false
 }
 
