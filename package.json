@@ -8,7 +8,10 @@
   "author": "Graham Hemsley",
   "license": "MIT",
   "dependencies": {
+    "css-loader": "^5.0.1",
     "dom-to-image-more": "^2.8.0",
+    "style-loader": "^2.0.0",
+    "tingle.js": "^0.15.3",
     "tiny-slider": "^2.9.3",
     "webpack": "^5.18.0"
   },
