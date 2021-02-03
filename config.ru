@@ -7,4 +7,5 @@ end
 use SessionsController
 use UsersController
 use MemesController
+use CommentsController
 run ApplicationController
