@@ -1,8 +1,8 @@
 <h1><%= @user.username %>'s memes</h1>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
-    <% @memes.each do |meme| %>
-      <a href='/users/<%= @user.id %>/memes/<%= meme.id %>' class='meme-link'>
+    <% @memes.reverse.each do |meme| %>
+      <a href='/memes/<%= meme.id %>' class='meme-link'>
         <div class='meme'>
           <h2 class='meme-name'><%= meme.name %></h3>
           <img src='<%= meme.image.url %>' class='meme-image' />
@@ -11,5 +11,5 @@
     <% end %>
   </div>
 <% else %>
-  <p>You have no memes to display</p>
+  <p>There are no memes to display! Create one now at <a href='/memes/new'>the meme creation page!</a></p>
 <% end %>
