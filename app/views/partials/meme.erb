@@ -42,7 +42,7 @@
         <p><%= comment.user.username %> says:</p>
         <p class='comment-text'><%= comment.text %></p>
         <p> Posted <%= comment.created_at.localtime.to_formatted_s(:short) %></p>
-        <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
+        <% if ( @user == current_user && @user.id == comment.user.id ) || @user.admin %>
           <form action="/comments/<%= comment.id %>" method='POST'>
             <input type='hidden' name='_method' value='DELETE'>
             <input type='submit' value='Delete' class='delete-button'>

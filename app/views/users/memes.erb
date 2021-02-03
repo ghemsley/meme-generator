@@ -1,4 +1,4 @@
-<% if current_user.admin %>
+<% if signed_in? && current_user&.admin %>
   <a href='/users/<%= @user.id %>/edit'>
     Moderate this account
   </a>
