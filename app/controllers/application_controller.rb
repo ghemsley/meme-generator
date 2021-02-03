@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    flash[:error] = 'Error: Page not found'
+    flash[:error] = 'Error: Requested resouce was not found'
     redirect '/'
   end
 
