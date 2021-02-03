@@ -40,6 +40,9 @@
               <div>Account</div>
             </a>
           <% end %>
+          <% if signed_in? %>
+            <p class='account-info'>Signed in as <%= current_user.username %></p>
+          <% end %>
         </nav>
       </div>
       <% flash.keys.each do |name| %>
