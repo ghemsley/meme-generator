@@ -26,35 +26,47 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id/edit' do
-    if session[:user_id] == params[:id].to_i
-      @user = current_user
-      if @user
-        erb :'users/edit'
+    if signed_in?
+      if session[:user_id] == params[:id].to_i
+        @user = User.find_by_id(params[:id].to_i)
+        if @user
+          erb :'users/edit'
+        else
+          flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+          redirect '/signin'
+        end
+      elsif session[:user_id] != params[:id].to_i
+        if current_user.admin
+          @user = User.find_by_id(params[:id].to_i)
+          erb :'users/edit'
+        else
+          flash[:error] = 'Error: Insufficient authorization to view this page'
+          redirect '/signin'
+        end
       else
-        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        flash[:error] = 'Error: Insufficent authorization to view this page'
         redirect '/signin'
       end
-    elsif session[:user_id] != params[:id].to_i
-      @user = User.find_by_id(params[:id].to_i)
-      erb :'users/edit' if @user.admin
     else
-      flash[:error] = 'Error: Insufficent authorization to view this page'
+      flash[:error] = 'Error: You are not signed in'
       redirect '/signin'
     end
   end
 
   get '/users/:id' do
-    if session[:user_id] == params[:id].to_i
+    if signed_in?
       @user = current_user
-      if @user
-        @memes = @user.memes
+      if @user.id == params[:id].to_i
+        erb :'users/show'
+      elsif @user.admin
+        @user = User.find_by_id[params[:id]]
         erb :'users/show'
       else
-        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        flash[:error] = 'Error: Insufficent authorization to view this page'
         redirect '/signin'
       end
     else
-      flash[:error] = 'Error: Insufficent authorization to view this page'
+      flash[:error] = 'Error: You are not signed in'
       redirect '/signin'
     end
   end
@@ -86,7 +98,7 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id' do
-    if session[:user_id]
+    if signed_in?
       user = current_user
       if user.id == params[:id].to_i || user.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
@@ -95,10 +107,10 @@ class UsersController < ApplicationController
             user.password = params[:user][:password] if params[:user][:password]
             if user.save
               flash[:success] = 'Success: saved account info!'
-              redirect "/users/#{user.id}"
+              redirect "/users/#{params[:id]}"
             else
               flash[:error] = 'Error: Failed to save account info, username may be taken'
-              redirect "/users/#{user.id}/edit"
+              redirect "/users/#{params[:id]}/edit"
             end
           elsif user.admin
             user_to_edit = User.find_by_id(params[:id])
@@ -109,7 +121,7 @@ class UsersController < ApplicationController
               redirect '/'
             else
               flash[:error] = 'Error: Failed to save account info, username may be taken'
-              redirect "/users/#{user.id}/edit"
+              redirect "/users/#{params[:id]}/edit"
             end
           else
             flash[:error] = 'Error: You do not have the required permissions'
@@ -117,7 +129,7 @@ class UsersController < ApplicationController
           end
         else
           flash[:error] = 'Error: Failed to authenticate'
-          redirect "/users/#{user.id}/edit"
+          redirect "/users/#{params[:id]}/edit"
         end
       else
         flash[:error] = 'Error: You do not have the required permissions'
@@ -130,7 +142,7 @@ class UsersController < ApplicationController
   end
 
   delete '/users/:id' do
-    if session[:user_id]
+    if signed_in?
       user = current_user
       if user.id == params[:id].to_i || user.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
@@ -141,7 +153,7 @@ class UsersController < ApplicationController
               redirect '/signup'
             else
               flash[:error] = 'Error: Failed to delete account'
-              redirect "/users/#{user.id}/edit"
+              redirect "/users/#{params[:id]}/edit"
             end
           elsif user.admin
             user_to_delete = User.find_by_id(params[:id])
@@ -150,7 +162,7 @@ class UsersController < ApplicationController
               redirect '/'
             else
               flash[:error] = 'Error: Failed to delete account'
-              redirect "/users/#{user.id}/edit"
+              redirect "/users/#{params[:id]}/edit"
             end
           else
             flash[:error] = 'Error: You do not have the required permissions'
@@ -158,7 +170,7 @@ class UsersController < ApplicationController
           end
         else
           flash[:error] = 'Error: Failed to authenticate'
-          redirect "/users/#{user.id}/edit"
+          redirect "/users/#{params[:id]}/edit"
         end
       else
         flash[:error] = 'Error: You do not have the required permissions'
