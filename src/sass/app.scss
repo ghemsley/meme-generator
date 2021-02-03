@@ -770,3 +770,11 @@ div.tns-controls {
   width: fit-content;
   border-radius: 6px;
 }
+
+.timestamps {
+  display: flex;
+  flex-direction: row;
+  p {
+    max-width: fit-content;
+  }
+}
