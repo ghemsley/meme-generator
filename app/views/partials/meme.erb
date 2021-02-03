@@ -12,7 +12,7 @@
       <p>Updated: <%=  @meme.updated_at.localtime.to_formatted_s(:short) %></p>
     <% end %>
   </div>
-  <% if @user == current_user && @user.id == @meme.user.id %>
+  <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
     <div class='edit-delete'>
       <a href='/memes/<%= @meme.id %>/edit' class='link'>
         <div>Edit</div>
@@ -42,6 +42,12 @@
         <p><%= comment.user.username %> says:</p>
         <p class='comment-text'><%= comment.text %></p>
         <p> Posted <%= comment.created_at.localtime.to_formatted_s(:short) %></p>
+        <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
+          <form action="/comments/<%= comment.id %>" method='POST'>
+            <input type='hidden' name='_method' value='DELETE'>
+            <input type='submit' value='Delete' class='delete-button'>
+          </form>
+        <% end %>
       </div>
     <% end %>
   </div>
