@@ -3,7 +3,7 @@ require './config/environment'
 class MemesController < ApplicationController
   get '/memes/new' do
     if signed_in?
-      @user ||= current_user
+      @user = current_user
       if @user
         erb :'memes/new'
       else
@@ -19,7 +19,7 @@ class MemesController < ApplicationController
   post '/memes' do
     if signed_in?
       user_id = session[:user_id]
-      user ||= current_user
+      user = current_user
       if user
         name = params[:meme][:name]
         top_caption = params[:meme][:top_caption]
@@ -49,7 +49,7 @@ class MemesController < ApplicationController
 
   get '/memes/:id/edit' do
     if signed_in?
-      @user ||= current_user
+      @user = current_user
       if @user
         @meme = Meme.find_by_id(params[:id])
         if @meme
@@ -69,12 +69,37 @@ class MemesController < ApplicationController
   end
 
   get '/memes/:id' do
-    @meme = Meme.find_by_id(params[:id])
-    if @meme
-      erb :"memes/show"
+    if session[:user_id]
+      @user = current_user
+      if @user
+        @meme = Meme.find_by_id(params[:id])
+        if @meme
+          erb :'memes/show'
+        else
+          flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
+          redirect "/"
+        end
+      else
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/signin'
+      end
+    elsif !session[:user_id]
+      @meme = Meme.find_by_id(params[:id])
+      if @meme
+        @user = User.find_by_id(@meme.user.id)
+        if @user
+          erb :'memes/show'
+        else
+          flash[:error] = "Error: Failed to find user with id #{@meme.user.id}"
+          redirect '/signin'
+        end
+      else
+        flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
+        redirect '/signin'
+      end
     else
-      flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
-      redirect '/memes'
+      flash[:error] = 'Error: Could not find page at that url'
+      redirect '/signin'
     end
   end
 
@@ -142,7 +167,7 @@ class MemesController < ApplicationController
   end
 
   get '/memes' do
-    @memes ||= Meme.all
+    @memes = Meme.all
     erb :'memes/index'
   end
 end

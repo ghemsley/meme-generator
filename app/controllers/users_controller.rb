@@ -1,35 +1,23 @@
 require './config/environment'
 class UsersController < ApplicationController
-  get '/users/:user_id/memes/:meme_id' do
-    if session[:user_id] == params[:user_id].to_i
-      @user = current_user
-      if @user
-        @meme = @user.memes.find_by_id(params[:meme_id])
-        if @meme
-          erb :'users/meme'
-        else
-          flash[:error] = "Error: Failed to find meme with id #{params[:meme_id]}"
-          redirect "/users/#{@user.id}/memes"
-        end
-      else
-        flash[:error] = "Error: Failed to find user with id #{params[:user_id]}"
-        redirect '/signin'
-      end
-    else
-      flash[:error] = 'Error: Insufficent authorization to view this page'
-      redirect '/signin'
-    end
-  end
-
   get '/users/:id/memes' do
-    if session[:user_id] == params[:id].to_i
+    if session[:user_id] == params[:id]
       @user = current_user
       if @user
         @memes = @user.memes
         erb :'users/memes'
       else
-        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
         redirect '/signin'
+      end
+    elsif params[:id]
+      @user = User.find_by_id(params[:id])
+      if @user
+        @memes = @user.memes
+        erb :'users/memes'
+      else
+        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        redirect '/'
       end
     else
       flash[:error] = 'Error: Insufficent authorization to view this page'

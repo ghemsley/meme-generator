@@ -17,13 +17,13 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    flash[:error] = 'Error: Requested resouce was not found'
+    flash[:error] = 'Error: Requested resource was not found'
     redirect '/'
   end
 
   get '/' do
     latest_count = [Meme.all.size, 9].min
-    @memes ||= Meme.last(latest_count)
+    @memes = Meme.last(latest_count)
     erb :index
   end
 
@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
     def current_user
       return unless session[:user_id]
 
-      @user ||= User.find_by_id(session[:user_id])
+      @user = User.find_by_id(session[:user_id])
       @user
     end
   end
