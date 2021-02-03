@@ -1,6 +1,11 @@
 <h1>Users</h1>
 <div class='users-container'>
   <% @users.each do |user| %>
-    <h2><%= user.username %></h2>
+    <div class='user'>
+      <h2><%= user.username %></h2>
+      <a href='/users/<%= user.id %>'>
+        Moderate
+      </a>
+    </div>
   <% end %>
 </div>
