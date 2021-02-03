@@ -24,3 +24,27 @@
     </div>
   <% end %>
 </div>
+<h2 class='comments-header'>Comments</h2>
+<% if signed_in? %>
+  <div class='form-container comment-form-container'>
+    <form class='comment-form' action='/comments' method='POST'>
+      <input type='hidden' value='<%= @user.id %>' name='comment[user_id]' >
+      <input type='hidden' value='<%= @meme.id %>' name='comment[meme_id]' >
+      <textarea rows='5' placeholder='Write a comment' name='comment[text]' maxlength='500' required ></textarea>
+      <input type='submit' value='Submit' class='submit-button'>
+    </form>
+  </form>
+<% end %>
+<% if !@meme.comments.empty? %>
+  <div class='comments-container'>
+    <% @meme.comments.each do |comment| %>
+      <div class='comment'>
+        <p><%= comment.user.username %> says:</p>
+        <p class='comment-text'><%= comment.text %></p>
+        <p> Posted <%= comment.created_at.localtime.to_formatted_s(:short) %></p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No comments have been written yet! Be the first!</p>
+<% end %>
