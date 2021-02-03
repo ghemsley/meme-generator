@@ -1,3 +1,8 @@
+<% if current_user.admin %>
+  <a href='/users/<%= @user.id %>/edit'>
+    Moderate this account
+  </a>
+<% end %>
 <h1><%= @user.username %>'s memes</h1>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
