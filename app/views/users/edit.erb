@@ -1,18 +1,20 @@
-<h1>Edit account</h1>
-<div class='form-container'>
-  <form action='/users/<%= @user.id %>' method='POST'>
-    <input type='hidden' name='_method' value='PATCH'>
-    <input type='text' name='user[username]' placeholder='New username' id='username' class='text-input' >
-    <input type='password' name='user[password]' placeholder='Current password' id='current_password' class='text-input' required >
-    <input type='password' name='user[new_password]' placeholder='New password' id='new_password' class='text-input' >
-    <input type='submit' class='submit-button' value='Submit'>
-  </form>
-</div>
-<h2>Delete account</h2>
-<div class='form-container'>
-  <form action='/users/<%= @user.id %>' method='POST'>
-    <input type='hidden' name='_method' value='DELETE'>
-    <input type='password' name='user[password]' placeholder='Password' id='password' class='text-input' required >
-    <input type='submit' class='submit-button delete-button' value='Delete account'>
-  </form>
-</div>
+<% if @user == current_user || @user.admin %>
+  <h1>Edit account</h1>
+  <div class='form-container'>
+    <form action='/users/<%= @user.id %>' method='POST'>
+      <input type='hidden' name='_method' value='PATCH'>
+      <input type='text' name='user[username]' placeholder='New username' id='username' class='text-input' >
+      <input type='password' name='user[password]' placeholder='Current password' id='current_password' class='text-input' required >
+      <input type='password' name='user[new_password]' placeholder='New password' id='new_password' class='text-input' >
+      <input type='submit' class='submit-button' value='Submit'>
+    </form>
+  </div>
+  <h2>Delete account</h2>
+  <div class='form-container'>
+    <form action='/users/<%= @user.id %>' method='POST'>
+      <input type='hidden' name='_method' value='DELETE'>
+      <input type='password' name='user[password]' placeholder='Password' id='password' class='text-input' required >
+      <input type='submit' class='submit-button delete-button' value='Delete account'>
+    </form>
+  </div>
+<% end %>

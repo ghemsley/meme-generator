@@ -683,6 +683,8 @@ form {
 }
 
 .delete-button {
+  color: white !important;
+  margin: auto;
   background-color: #d61560 !important;
   &:hover {
     background-color: #fa317e !important;
@@ -806,6 +808,11 @@ div.tns-controls {
     justify-content: flex-start;
     align-items: flex-start;
     border-bottom: 1px solid gray;
+    .delete-button {
+      margin-top: -3em;
+      margin-right: -6em;
+      font-size: large;
+    }
     .comment-text {
       margin: 0px;
       border: 1px  solid gray;
