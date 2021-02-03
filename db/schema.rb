@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false, null: false
   end
 
   add_foreign_key "comments", "memes", on_delete: :cascade

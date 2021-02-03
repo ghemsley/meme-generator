@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    def admin_password
+      ENV['SINATRA_ADMIN_PASSWORD']
+    end
+
     def signed_in?
       if session[:user_id]
         true
