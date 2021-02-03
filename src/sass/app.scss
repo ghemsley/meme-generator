@@ -778,3 +778,44 @@ div.tns-controls {
     max-width: fit-content;
   }
 }
+
+.comments-header {
+  margin-top: 1em;
+}
+
+.comment-form-container {
+  margin-bottom: 3em;
+  textarea {
+    font-family: 'Comic sans', 'Comic Relief';
+    font-size: large;
+    min-width: 35em;
+  }
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 16px;
+  .comment {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 1px solid gray;
+    .comment-text {
+      margin: 0px;
+      border: 1px  solid gray;
+      background-color: #f0f0f0;
+      border-radius: 6px;
+      padding: 16px;
+      width: 30em;
+      min-height: 3em;
+      text-align: left;
+      vertical-align: text-top;
+    }
+  }
+}
