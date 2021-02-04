@@ -42,6 +42,7 @@
           <% end %>
           <% if signed_in? %>
             <p class='account-info'>Signed in as <%= current_user.username %></p>
+            <a class='create-meme' href='/memes/new'>Create a meme!</a>
           <% end %>
         </nav>
       </div>

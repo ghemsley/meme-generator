@@ -832,7 +832,7 @@ div.tns-controls {
 
 .account-info {
   font-size: smaller;
-  background-color: #d61560;
+  background-color: hsl(160, 75%, 40%);
   padding: 8px;
   margin: 0px;
   color: white !important;
@@ -843,5 +843,22 @@ div.tns-controls {
   max-width: fit-content;
   p {
     margin: 0px;
+  }
+}
+
+.create-meme {
+  font-size: smaller;
+  background-color: #d61560;
+  padding: 8px;
+  margin: 0px;
+  color: white !important;
+  border-radius: 6px;
+  padding-left: 16px;
+  padding-right: 16px;
+  transition: 100ms all;
+  max-width: fit-content;
+  &:hover {
+    transform: scale(1.025);
+    background-color: #fa317e;
   }
 }
