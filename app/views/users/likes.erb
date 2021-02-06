@@ -1,0 +1,26 @@
+<% if signed_in? && current_user&.admin %>
+  <a href='/users/<%= @user.id %>/edit'>
+    Moderate this account
+  </a>
+<% end %>
+<h1><%= @user.username %>'s likes</h1>
+<% if !@user.likes&.empty? %>
+  <div class='memes-container'>
+    <% @user.likes.reverse.each do |like| %>
+      <a href='/memes/<%= like.meme.id %>' class='meme-link'>
+        <div class='meme'>
+          <h2 class='meme-name'><%= like.meme.name %></h2>
+          <div class='likes-comments'>
+            <p class='likes'><%= like.meme.likes.count %> like<%= like.meme.likes.count > 1 ? 's' : '' %></p>
+            <% if !like.meme.comments.empty? %>
+              <p><%= like.meme.comments.count %> comment<%= like.meme.comments.count > 1 ? 's' : '' %></p>
+            <% end %>
+          </div>
+          <img src='<%= like.meme.image.url %>' class='meme-image' />
+        </div>
+      </a>
+    <% end %>
+  </div>
+<% else %>
+  <p>There are no likes to display!</p>
+<% end %>
