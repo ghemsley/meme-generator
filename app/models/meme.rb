@@ -4,7 +4,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 class Meme < ActiveRecord::Base
   belongs_to :user
-  has_many :ratings, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   mount_uploader :image, ImageUploader

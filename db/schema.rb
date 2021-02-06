@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_205200) do
+ActiveRecord::Schema.define(version: 2021_02_06_175051) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "meme_id"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["meme_id"], name: "index_comments_on_meme_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "meme_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meme_id"], name: "index_likes_on_meme_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "memes", force: :cascade do |t|
@@ -34,16 +43,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
     t.index ["user_id"], name: "index_memes_on_user_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "meme_id"
-    t.integer "user_id"
-    t.integer "number", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["meme_id"], name: "index_ratings_on_meme_id"
-    t.index ["user_id"], name: "index_ratings_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest"
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_205200) do
 
   add_foreign_key "comments", "memes", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "likes", "memes", on_delete: :cascade
+  add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "memes", "users", on_delete: :cascade
-  add_foreign_key "ratings", "memes", on_delete: :cascade
-  add_foreign_key "ratings", "users", on_delete: :cascade
 end

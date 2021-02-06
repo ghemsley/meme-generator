@@ -8,4 +8,5 @@ use SessionsController
 use UsersController
 use MemesController
 use CommentsController
+use LikesController
 run ApplicationController
