@@ -3,6 +3,14 @@
   <a href='/users/<%= @meme.user.id %>/memes'>
     Author: <%= @meme.user.username %>
   </a>
+  <div class='likes-comments'>
+    <% if !@meme.likes.empty? %>
+      <p><%= @meme.likes.count %> like<%= @meme.likes.count > 1 ? 's' : '' %></p>
+    <% end %>
+    <% if !@meme.comments.empty? %>
+      <p><%= @meme.comments.count %> comment<%= @meme.comments.count > 1 ? 's' : '' %></p>
+    <% end %>
+  </div>
   <a href='<%= @meme.image.url %>'>
     <img src='<%= @meme.image.url %>'/>
   </a>

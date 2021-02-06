@@ -6,6 +6,14 @@
       <a href='/memes/<%= meme.id %>' class='meme-link'>
         <div class='meme slider-meme'>
           <h2 class='meme-name'><%= meme.name %></h2>
+          <div class='likes-comments'>
+            <% if !meme.likes.empty? %>
+              <p class='likes'><%= meme.likes.count %> like<%= meme.likes.count > 1 ? 's' : '' %></p>
+            <% end %>
+            <% if !meme.comments.empty? %>
+              <p><%= meme.comments.count %> comment<%= meme.comments.count > 1 ? 's' : '' %></p>
+            <% end %>
+          </div>
           <img class='meme-image' src='<%= meme.image.url %>' />
         </div>
       </a>

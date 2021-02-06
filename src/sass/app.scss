@@ -727,6 +727,7 @@ form {
 
 div.tns-controls {
   margin: auto;
+  margin-bottom: 16px;
   max-width: fit-content;
   button {
     font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
@@ -884,5 +885,17 @@ form {
     &:hover {
       background-color: #fa317e;
     }
+  }
+}
+
+.likes-comments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  p {
+    margin: 0px;
+    padding: 0px;
   }
 }

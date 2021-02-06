@@ -8,6 +8,15 @@
         <p>Author: <%= meme.user.username %></p>
         <img class='meme-image' src='<%= meme.image.url %>' />
       </div>
+      
+    <div class='likes-comments'>
+      <% if !meme.likes.empty? %>
+        <p><%= meme.likes.count %> like<%= meme.likes.count > 1 ? 's' : '' %></p>
+      <% end %>
+      <% if !meme.comments.empty? %>
+        <p><%= meme.comments.count %> comment<%= meme.comments.count > 1 ? 's' : '' %></p>
+      <% end %>
+    </div>
     </a>
     <% end %>
   </div>
