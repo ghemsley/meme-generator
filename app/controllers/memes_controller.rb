@@ -18,7 +18,6 @@ class MemesController < ApplicationController
 
   post '/memes' do
     if signed_in?
-      user_id = session[:user_id]
       user = current_user
       if user
         name = params[:meme][:name]
@@ -36,10 +35,10 @@ class MemesController < ApplicationController
         if meme.save
           flash[:success] = 'Success: Created a new meme!'
         else
-          flash[:error] = 'Error: Failed to create meme'
+          flash[:error] = 'Error: Failed to create meme, try a different name'
         end
       else
-        flash[:error] = "Error: Failed to find user with id #{user_id}"
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
       end
     else
       flash[:error] = 'Error: You are not signed in'
