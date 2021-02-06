@@ -1,5 +1,30 @@
 require './config/environment'
 class UsersController < ApplicationController
+  get '/users/:id/likes' do
+    if session[:user_id] == params[:id]
+      @user = current_user
+      if @user
+        @likes = @user.likes
+        erb :'users/likes'
+      else
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/signin'
+      end
+    elsif params[:id]
+      @user = User.find_by_id(params[:id])
+      if @user
+        @likes = @user.likes
+        erb :'users/likes'
+      else
+        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
+        redirect '/'
+      end
+    else
+      flash[:error] = 'Error: Insufficent authorization to view this page'
+      redirect '/signin'
+    end
+  end
+
   get '/users/:id/memes' do
     if session[:user_id] == params[:id]
       @user = current_user
