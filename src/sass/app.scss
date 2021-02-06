@@ -563,14 +563,14 @@ nav {
   margin: 0px;
   max-width: fit-content;
   margin: auto;
-  font-size: larger;
   vertical-align: middle;
   div {
+    font-size: larger;
     transition: all ease 100ms;
     background: #3783e6;
     min-width: 3em;
     margin: 0px;
-    padding: 0.333em;
+    padding: 0.43em;
     padding-left: 1em;
     padding-right: 1em;
     color: white;
@@ -676,7 +676,7 @@ form {
   }
 }
 
-.edit-delete {
+.like-edit-delete {
   display: flex;
   flex-direction: row;
   column-gap: 32px;
@@ -818,7 +818,7 @@ div.tns-controls {
     }
     .comment-text {
       margin: 0px;
-      border: 1px  solid gray;
+      border: 1px solid gray;
       background-color: #f0f0f0;
       border-radius: 6px;
       padding: 16px;
@@ -860,5 +860,29 @@ div.tns-controls {
   &:hover {
     transform: scale(1.025);
     background-color: #fa317e;
+  }
+}
+
+form {
+  input.like-button {
+    font-size: larger;
+    margin: 0px;
+    min-width: 5em;
+    padding: .5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #3783e6;
+    transition: 100ms all;
+    color: white;
+    &:hover {
+      transform: scale(1.025);
+      background-color: #3a8af2 !important;
+    }
+  }
+
+  input.unlike-button {
+    &:hover {
+      background-color: #fa317e;
+    }
   }
 }

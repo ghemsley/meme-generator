@@ -12,32 +12,32 @@
       <p>Updated: <%=  @meme.updated_at.localtime.to_formatted_s(:short) %></p>
     <% end %>
   </div>
-  <% if signed_in? && !@user.likes.find_by(meme_id: @meme.id) %>
-    <form action='/likes' method='POST'>
-      <input type='hidden' value='<%= @user.id %>' name='like[user_id]'>
-      <input type='hidden' value='<%= @meme.id %>' name='like[meme_id]'>
-      <input type='submit' value='Like' class='like-button'>
-    </form>
-  <% end %>
-  <% if signed_in? && @user.likes.find_by(meme_id: @meme.id) %>
-    <form action='/likes/<%= @meme.likes.find_by(user_id: @user.id).id %>' method='POST'>
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type='hidden' value='<%= @user.id %>' name='like[user_id]'>
-      <input type='hidden' value='<%= @meme.id %>' name='like[meme_id]'>
-      <input type='submit' value='Unlike' class='like-button unlike-button'>
-    </form>
-  <% end %>
-  <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
-    <div class='edit-delete'>
-      <a href='/memes/<%= @meme.id %>/edit' class='link'>
-        <div>Edit</div>
-      </a>
-      <form action='/memes/<%= @meme.id %>' method='POST'>
-        <input type='hidden' name='_method' value='DELETE'>
-        <input type='submit' class='link' value='Delete'>
+  <div class='like-edit-delete'>
+    <% if signed_in? && !@user.likes.find_by(meme_id: @meme.id) %>
+      <form action='/likes' method='POST'>
+        <input type='hidden' value='<%= @user.id %>' name='like[user_id]'>
+        <input type='hidden' value='<%= @meme.id %>' name='like[meme_id]'>
+        <input type='submit' value='Like' class='link like-button'>
       </form>
-    </div>
-  <% end %>
+    <% end %>
+    <% if signed_in? && @user.likes.find_by(meme_id: @meme.id) %>
+      <form action='/likes/<%= @meme.likes.find_by(user_id: @user.id).id %>' method='POST'>
+        <input type='hidden' name='_method' value='DELETE'>
+        <input type='hidden' value='<%= @user.id %>' name='like[user_id]'>
+        <input type='hidden' value='<%= @meme.id %>' name='like[meme_id]'>
+        <input type='submit' value='Unlike' class='link like-button unlike-button'>
+      </form>
+    <% end %>
+    <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
+        <a href='/memes/<%= @meme.id %>/edit' class='link'>
+          <div>Edit</div>
+        </a>
+        <form action='/memes/<%= @meme.id %>' method='POST'>
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type='submit' class='link' value='Delete'>
+        </form>
+    <% end %>
+  </div>
 </div>
 <h2 class='comments-header'>Comments</h2>
 <% if signed_in? %>
