@@ -126,7 +126,7 @@
 }
 
 html {
-  font-family: 'Comic Sans', 'Comic Relief', Nunito, 'Nunito', -apple-system,
+  font-family: Nunito, 'Nunito', -apple-system,
     BlinkMacSystemFont, 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial,
     sans-serif;
   height: 100%;
@@ -135,7 +135,7 @@ html {
 
 body {
   background: #d8ebf2;
-  font-family: 'Comic Sans', 'Comic Relief', Nunito, 'Nunito', -apple-system,
+  font-family: Nunito, 'Nunito', -apple-system,
     BlinkMacSystemFont, 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial,
     sans-serif;
   height: 100%;
@@ -623,12 +623,12 @@ nav {
 }
 
 form {
-  font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
+  font-family: 'Nunito';
   margin: auto;
   padding: 0px;
   max-height: fit-content;
   button {
-    font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
+    font-family: 'Nunito';
     font-size: larger;
     transition: all ease 100ms;
     background: #3783e6;
@@ -649,7 +649,7 @@ form {
     }
   }
   input {
-    font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
+    font-family: 'Nunito';
   }
   .link {
     font-size: larger;
@@ -702,7 +702,7 @@ form {
     text-align: center;
     background-color: transparent;
     .create-button {
-      font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
+      font-family: 'Nunito';
       padding: 16px;
       border-radius: 6px;
       font-size: larger;
@@ -730,7 +730,7 @@ div.tns-controls {
   margin-bottom: 16px;
   max-width: fit-content;
   button {
-    font-family: 'Comic Sans', 'Comic Relief', 'Nunito';
+    font-family: 'Nunito';
     padding: 12px;
     border-radius: 6px;
     font-size: large;
@@ -792,7 +792,7 @@ div.tns-controls {
 .comment-form-container {
   margin-bottom: 3em;
   textarea {
-    font-family: 'Comic sans', 'Comic Relief';
+    font-family: 'Nunito';
     font-size: large;
     min-width: 35em;
   }
@@ -818,6 +818,7 @@ div.tns-controls {
       font-size: large;
     }
     .comment-text {
+      font-family: 'Comic Sans', 'Comic Relief';
       margin: 0px;
       border: 1px solid gray;
       background-color: #f0f0f0;
@@ -869,7 +870,7 @@ form {
     font-size: larger;
     margin: 0px;
     min-width: 5em;
-    padding: .5em;
+    padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
     background-color: #3783e6;
@@ -898,4 +899,53 @@ form {
     margin: 0px;
     padding: 0px;
   }
+}
+
+.doge-div {
+  position: absolute;
+  width: max-content;
+  margin: auto;
+  top: 24px;
+  left: -980px;
+  right: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  .doge {
+    position: relative;
+    top: 40px;
+    left: -100px;
+    width: 120px;
+    transform: rotate(10deg);
+  }
+  .speech-bubble {
+    font-family: 'Comic Sans', 'Comic Relief';
+    position: absolute;
+    width: max-content;
+    color: black;
+    background-color: white;
+    padding: 16px;
+    border-radius: 16px;
+    transform: rotate(1deg);
+    &::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      bottom: -16px;
+      border-left: 16px solid white;
+      border-right: 8px solid transparent;
+      border-top: 8px solid white;
+      border-bottom: 8px solid transparent;
+    }
+  }
+}
+
+.hashtags {
+  font-family: 'Comic Sans', 'Comic Relief';
+  position: absolute;
+  margin: auto;
+  top: 64px;
+  left: 0px;
+  right: -900px;
+  line-height: 1em;
 }
