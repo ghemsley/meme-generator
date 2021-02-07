@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rack-contrib'
 gem 'rake'
 gem 'require_all'
+gem 'sanitize'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib', require: false

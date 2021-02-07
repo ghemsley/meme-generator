@@ -116,7 +116,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    username = params[:user][:username]
+    username = Sanitize.fragment(params[:user][:username])
     password = params[:user][:password]
     user = if password == admin_password
              User.new(username: username, password: password, admin: true)
@@ -138,7 +138,7 @@ class UsersController < ApplicationController
       if user.id == params[:id].to_i || user.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
           if user.id == params[:id]
-            user.username = params[:user][:username] if params[:user][:username]
+            user.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
             user.password = params[:user][:password] if params[:user][:password]
             if user.save
               flash[:success] = 'Success: saved account info!'
@@ -149,7 +149,7 @@ class UsersController < ApplicationController
             end
           elsif user.admin
             user_to_edit = User.find_by_id(params[:id])
-            user_to_edit.username = params[:user][:username] if params[:user][:username]
+            user_to_edit.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
             user_to_edit.password = params[:user][:password] if params[:user][:password]
             if user_to_edit.save
               flash[:success] = 'Success: saved account info!'

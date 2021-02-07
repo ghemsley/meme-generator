@@ -20,9 +20,9 @@ class MemesController < ApplicationController
     if signed_in?
       user = current_user
       if user
-        name = params[:meme][:name]
-        top_caption = params[:meme][:top_caption]
-        bottom_caption = params[:meme][:bottom_caption]
+        name = Sanitize.fragment(params[:meme][:name]) if params[:meme][:name]
+        top_caption = Sanitize.fragment(params[:meme][:top_caption]) if params[:meme][:top_caption]
+        bottom_caption = Sanitize.fragment(params[:meme][:bottom_caption]) if params[:meme][:bottom_caption]
         image = params[:meme][:image]
         original_image = params[:meme][:original_image]
         meme = Meme.new
@@ -109,9 +109,9 @@ class MemesController < ApplicationController
         meme = Meme.find_by_id(params[:id])
         if meme
           if user.memes.find_by_id(meme.id)
-            meme.name = params[:meme][:name] if params[:meme][:name]
-            meme.top_caption = params[:meme][:top_caption] if params[:meme][:top_caption]
-            meme.bottom_caption = params[:meme][:bottom_caption] if params[:meme][:bottom_caption]
+            meme.name = Sanitize.fragment(params[:meme][:name]) if params[:meme][:name]
+            meme.top_caption = Sanitize.fragment(params[:meme][:top_caption]) if params[:meme][:top_caption]
+            meme.bottom_caption = Sanitize.fragment(params[:meme][:bottom_caption]) if params[:meme][:bottom_caption]
             meme.image = params[:meme][:image] if params[:meme][:image]
             meme.original_image = params[:meme][:image] if params[:meme][:image]
             if meme.save

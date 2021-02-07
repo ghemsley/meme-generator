@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         comment = Comment.new
         comment.user_id = user.id
         comment.meme_id = Meme.find_by_id(params[:comment][:meme_id])&.id
-        comment.text = params[:comment][:text]
+        comment.text = Sanitize.fragment(params[:comment][:text])
         if comment.save
           flash[:success] = 'Success: Posted a new comment!'
         else
