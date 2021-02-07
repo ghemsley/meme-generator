@@ -3,9 +3,9 @@
 <h1>Create a meme</h1>
 <div class='form-container'>
   <form enctype="multipart/form-data" id='meme-form' onSubmit='return formSubmit(event)'>
-    <input type='text' name='meme[name]' placeholder='Name' id='name' class='text-input' required >
-    <input type='text' name='meme[top_caption]' placeholder='Top caption' id='top-caption' class='text-input' required >
-    <input type='text' name='meme[bottom_caption]' placeholder='Bottom caption' id='bottom-caption' class='text-input' required >
+    <input type='text' name='meme[name]' placeholder='Name' id='name' class='text-input' required pattern='.{1,100}' title='100 characters maximum'>
+    <input type='text' name='meme[top_caption]' placeholder='Top caption' id='top-caption' class='text-input' required pattern='.{1,100}' title='100 characters maximum'>
+    <input type='text' name='meme[bottom_caption]' placeholder='Bottom caption' id='bottom-caption' class='text-input' required pattern='.{1,100}' title='100 characters maximum'>
     <input type='file' accept='image/*' name='meme[image]' id='image-upload' class='image-upload' required >
     <input type='submit' value='Create' class='submit-button'>
   </form>

@@ -5,5 +5,5 @@ class Comment < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :meme_id, presence: true
-  validates :text, presence: true
+  validates :text, presence: true, length: { maximum: 500 }
 end

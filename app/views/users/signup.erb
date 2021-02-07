@@ -1,8 +1,8 @@
 <h1>Sign up</h1>
 <div class='form-container'>
   <form action='/signup' method='POST'>
-    <input type='text' name='user[username]' placeholder='Username' id='username' class='text-input' required >
-    <input type='password' name='user[password]' placeholder='Password' id='password' class='text-input' required >
+    <input type='text' name='user[username]' placeholder='Username' id='username' class='text-input' required pattern="\w+" title="Alphanumeric characters, including underscore">
+    <input type='password' name='user[password]' placeholder='Password' id='password' class='text-input' required pattern=".{8,}" title="At least eight characters" >
     <input type='submit' class='submit-button' value='Sign up'>
   </form>
 </div>

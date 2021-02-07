@@ -16,9 +16,9 @@ var originalBottomCaption = \"#{@meme.bottom_caption}\"
   <div class='form-container'>
     <h2>Edit</h2>
     <form enctype="multipart/form-data" id='meme-form' onSubmit='return formSubmit(event)'>
-      <input type='text' name='meme[name]' placeholder='<%= @meme.name %>' id='name' class='text-input' >
-      <input type='text' name='meme[top_caption]' placeholder='<%= @meme.top_caption %>' id='top-caption' class='text-input' >
-      <input type='text' name='meme[bottom_caption]' placeholder='<%= @meme.bottom_caption %>' id='bottom-caption' class='text-input' >
+      <input type='text' name='meme[name]' placeholder='<%= @meme.name %>' id='name' class='text-input' pattern='.{1,100}' title='100 characters maximum'>
+      <input type='text' name='meme[top_caption]' placeholder='<%= @meme.top_caption %>' id='top-caption' class='text-input' pattern='.{1,100}' title='100 characters maximum'>
+      <input type='text' name='meme[bottom_caption]' placeholder='<%= @meme.bottom_caption %>' id='bottom-caption' class='text-input' pattern='.{1,100}' title='100 characters maximum'>
       <input type='file' accept='image/*' name='meme[image]' id='image-upload' class='image-upload' >
       <input type='submit' value='Generate' class='submit-button'>
       <button onclick="return buttonSubmit()" style="display: none;" class='create-button'>Save changes</button>
