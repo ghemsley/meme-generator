@@ -137,25 +137,25 @@ class UsersController < ApplicationController
       user = current_user
       if user.id == params[:id].to_i || user.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
-          if user.id == params[:id]
+          if user.id == params[:id].to_i
             user.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
-            user.password = params[:user][:password] if params[:user][:password]
+            user.password = params[:user][:new_password] if params[:user][:new_password]
             if user.save
               flash[:success] = 'Success: saved account info!'
               redirect "/users/#{params[:id]}"
             else
-              flash[:error] = 'Error: Failed to save account info, username may be taken'
+              flash[:error] = 'Error: Failed to save account info, username may be taken or invalid'
               redirect "/users/#{params[:id]}/edit"
             end
           elsif user.admin
             user_to_edit = User.find_by_id(params[:id])
             user_to_edit.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
-            user_to_edit.password = params[:user][:password] if params[:user][:password]
+            user_to_edit.password = params[:user][:new_password] if params[:user][:new_password]
             if user_to_edit.save
               flash[:success] = 'Success: saved account info!'
               redirect '/'
             else
-              flash[:error] = 'Error: Failed to save account info, username may be taken'
+              flash[:error] = 'Error: Failed to save account info, username may be taken or invalid'
               redirect "/users/#{params[:id]}/edit"
             end
           else
@@ -181,7 +181,7 @@ class UsersController < ApplicationController
       user = current_user
       if user.id == params[:id].to_i || user.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
-          if user.id == params[:id]
+          if user.id == params[:id].to_i
             if user.destroy
               session.delete(:user_id)
               flash[:success] = 'Success: deleted account!'
