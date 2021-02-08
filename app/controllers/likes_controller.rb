@@ -34,10 +34,10 @@ class LikesController < ApplicationController
         else
           flash[:error] = 'Error: Failed to unlike meme'
         end
-        redirect "/memes/#{meme_id}"
       else
         flash[:error] = 'Error: You do not have the required permissions'
       end
+      redirect "/memes/#{meme_id}"
     else
       flash[:error] = 'Error: You are not signed in'
       redirect '/signin'
