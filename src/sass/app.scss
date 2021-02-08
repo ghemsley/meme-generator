@@ -134,7 +134,7 @@ html {
 }
 
 body {
-  background: #d8ebf2;
+  background: #e0f0ff;
   font-family: Nunito, 'Nunito', -apple-system,
     BlinkMacSystemFont, 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial,
     sans-serif;
@@ -152,13 +152,13 @@ li {
 
 a,
 a :visited :active {
-  color: #3783e6;
+  color: #2B66B3;
   text-decoration: none;
-  transition: all ease 250ms;
+  transition: all ease 150ms;
 }
 a:hover {
-  transition: all ease 250ms !important;
-  color: #3a8af2;
+  transition: all ease 150ms !important;
+  color: #3783E6;
 }
 ul {
   margin-bottom: 0px;
@@ -179,8 +179,8 @@ nav {
   max-width: 640px;
   a {
     div {
-      transition: all ease 100ms;
-      background: #3783e6;
+      transition: all ease 150ms;
+      background: #2B66B3;
       margin: 0px;
       padding: 0.333em;
       padding-left: 1em;
@@ -197,7 +197,7 @@ nav {
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
           1px 6px 10px rgba(39, 44, 49, 0.12);
         color: white;
-        background: #3a8af2;
+        background: #3783E6;
       }
     }
   }
@@ -223,7 +223,7 @@ nav {
   margin: auto;
   transform-origin: center;
   transform: rotate(15deg);
-  background-color: #fa317e;
+  background-color: #f55d4c;
   width: fit-content;
   height: fit-content;
   padding: 2px;
@@ -240,7 +240,7 @@ nav {
 
 .footer {
   height: 80px;
-  background: #153259;
+  background: #183A66;
 }
 
 .push {
@@ -250,7 +250,7 @@ nav {
 .header {
   position: relative;
   box-sizing: border-box;
-  background: #153259;
+  background: #183A66;
   color: white;
   left: 0px;
   width: 100%;
@@ -273,7 +273,7 @@ nav {
     padding: 16px;
     padding-left: 32px;
     padding-right: 32px;
-    background-color: #00afd7;
+    background-color: #7EADEA;
     width: fit-content;
     border-radius: 6px;
   }
@@ -304,12 +304,12 @@ nav {
   .flash-close-button {
     opacity: inherit;
     backdrop-filter: blur(6px);
-    transition: 100ms all;
+    transition: 150ms all;
     position: relative;
     top: -12px;
     right: -102.5%;
     color: black;
-    background: white;
+    background: #f4faff;
     border-radius: 6px;
     padding-left: 12px;
     padding-right: 12px;
@@ -323,7 +323,7 @@ nav {
     &:hover,
     &:focus {
       color: white;
-      background-color: orangered;
+      background-color: #ff1900;
     }
   }
   .flash-content {
@@ -333,11 +333,11 @@ nav {
 }
 
 .flash-error {
-  background-color: crimson;
+  background-color: #E65D4E;
 }
 
 .flash-success {
-  background-color: hsl(160, 75%, 40%);
+  background-color: #3783E6;
 }
 
 .flash-info {
@@ -362,8 +362,8 @@ nav {
     }
     .submit-button,
     .file-upload {
-      transition: all ease 100ms;
-      background: #3783e6;
+      transition: all ease 150ms;
+      background: #3783E6;
       margin: auto;
       margin-bottom: 0.35em;
       padding: 0.333em;
@@ -379,7 +379,7 @@ nav {
       &:hover {
         transform: scale(1.025);
         color: white;
-        background: #3a8af2;
+        background: #f55d4c;
       }
     }
   }
@@ -458,11 +458,11 @@ nav {
   max-width: 600px;
   box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
     1px 6px 10px rgba(39, 44, 49, 0.12);
-  transition: all ease 250ms;
+  transition: all ease 150ms;
   border-radius: 8px;
-  background-color: white;
+  background-color: #f4faff;
   &:hover {
-    transition: all ease 250ms;
+    transition: all ease 150ms;
     box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.48),
       1px 6px 10px rgba(39, 44, 49, 0.24);
   }
@@ -514,11 +514,11 @@ nav {
       padding: 1em;
       box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
-      transition: all ease 250ms;
+      transition: all ease 150ms;
       border-radius: 8px;
-      background-color: white;
+      background-color: #f4faff;
       &:hover {
-        transition: all ease 250ms;
+        transition: all ease 150ms;
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.48),
           1px 6px 10px rgba(39, 44, 49, 0.24);
         transform: scale(1.025);
@@ -567,8 +567,8 @@ nav {
   vertical-align: middle;
   div {
     font-size: larger;
-    transition: all ease 100ms;
-    background: #3783e6;
+    transition: all ease 150ms;
+    background: #2B66B3;
     min-width: 3em;
     margin: 0px;
     padding: 0.43em;
@@ -585,7 +585,7 @@ nav {
       box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
       color: white;
-      background: #3a8af2;
+      background: #3783E6;
     }
   }
 }
@@ -601,8 +601,8 @@ nav {
     margin-bottom: 1em;
     .user-link {
       text-align: center;
-      transition: all ease 100ms;
-      background: #3783e6;
+      transition: all ease 150ms;
+      background: #2B66B3;
       margin: auto;
       padding: 0.333em;
       padding-left: 1em;
@@ -617,7 +617,7 @@ nav {
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
           1px 6px 10px rgba(39, 44, 49, 0.12);
         color: white;
-        background: #3a8af2;
+        background: #3783E6;
       }
     }
   }
@@ -631,8 +631,8 @@ form {
   button {
     font-family: 'Nunito';
     font-size: larger;
-    transition: all ease 100ms;
-    background: #3783e6;
+    transition: all ease 150ms;
+    background: #2B66B3;
     margin: auto;
     padding: 0.333em;
     padding-left: 1em;
@@ -654,8 +654,8 @@ form {
   }
   .link {
     font-size: larger;
-    transition: all ease 100ms;
-    background: #3783e6;
+    transition: all ease 150ms;
+    background: #2B66B3;
     margin: 0px;
     padding: 0.5em;
     padding-left: 1em;
@@ -670,7 +670,7 @@ form {
     &:hover {
       transform: scale(1.06);
       color: white;
-      background: #3a8af2;
+      background: #3783E6;
       box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
     }
@@ -690,9 +690,9 @@ form {
 .delete-button {
   color: white !important;
   margin: auto;
-  background-color: #d61560 !important;
+  background-color: #3783E6 !important;
   &:hover {
-    background-color: #fa317e !important;
+    background-color: #f55d4c !important;
   }
 }
 
@@ -707,6 +707,13 @@ form {
       padding: 16px;
       border-radius: 6px;
       font-size: larger;
+      background-color: #3783E6;
+      border: none;
+      transition: all ease 150ms;
+      &:hover {
+        background-color: #f55d4c;
+        transform: scale(1.025);
+      }
     }
   }
 }
@@ -741,9 +748,9 @@ div.tns-controls {
       1px 6px 10px rgba(39, 44, 49, 0.12);
     border: none;
     min-width: 7em;
-    transition: 100ms all;
+    transition: 150ms all;
     &:hover {
-      background-color: #3a8af2;
+      background-color: #3783E6;
       transform: scale(1.06);
       box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.36),
         1px 6px 10px rgba(39, 44, 49, 0.18);
@@ -773,7 +780,7 @@ div.tns-controls {
   padding: 16px;
   padding-left: 32px;
   padding-right: 32px;
-  background-color: #d61560;
+  background-color: #2B66B3;
   width: fit-content;
   border-radius: 6px;
 }
@@ -823,7 +830,7 @@ div.tns-controls {
       font-weight: 400;
       margin: 0px;
       border: 1px solid gray;
-      background-color: #f0f0f0;
+      background-color: #f4faff;
       border-radius: 6px;
       padding: 16px;
       width: 30em;
@@ -836,14 +843,14 @@ div.tns-controls {
 
 .account-info {
   font-size: smaller;
-  background-color: hsl(160, 75%, 40%);
+  background-color: #374B66;
   padding: 8px;
   margin: 0px;
   color: white !important;
   border-radius: 6px;
   padding-left: 16px;
   padding-right: 16px;
-  transition: 100ms all;
+  transition: 150ms all;
   max-width: fit-content;
   p {
     margin: 0px;
@@ -852,18 +859,18 @@ div.tns-controls {
 
 .create-meme {
   font-size: smaller;
-  background-color: #d61560;
+  background-color: #3783E6;
   padding: 8px;
   margin: 0px;
   color: white !important;
   border-radius: 6px;
   padding-left: 16px;
   padding-right: 16px;
-  transition: 100ms all;
+  transition: 150ms all;
   max-width: fit-content;
   &:hover {
     transform: scale(1.025);
-    background-color: #fa317e;
+    background-color: #f55d4c;
   }
 }
 
@@ -875,18 +882,18 @@ form {
     padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
-    background-color: #3783e6;
-    transition: 100ms all;
+    background-color: #2B66B3;
+    transition: 150ms all;
     color: white;
     &:hover {
       transform: scale(1.025);
-      background-color: #3a8af2 !important;
+      background-color: #3783E6 !important;
     }
   }
 
   input.unlike-button {
     &:hover {
-      background-color: #fa317e;
+      background-color: #f55d4c;
     }
   }
 }
@@ -907,7 +914,7 @@ form {
   position: absolute;
   width: max-content;
   margin: auto;
-  top: 48px;
+  top: 40px;
   left: -960px;
   right: 0px;
   display: flex;
@@ -925,7 +932,7 @@ form {
     position: absolute;
     width: max-content;
     color: black;
-    background-color: white;
+    background-color: #f4faff;
     padding: 16px;
     border-radius: 16px;
     transform: rotate(1deg);
@@ -934,9 +941,9 @@ form {
       position: absolute;
       left: 16px;
       bottom: -16px;
-      border-left: 16px solid white;
+      border-left: 16px solid #f4faff;
       border-right: 8px solid transparent;
-      border-top: 8px solid white;
+      border-top: 8px solid #f4faff;
       border-bottom: 8px solid transparent;
     }
   }
@@ -951,4 +958,5 @@ form {
   left: 0px;
   right: -1000px;
   line-height: 1.2em;
+  color: #f4faff
 }

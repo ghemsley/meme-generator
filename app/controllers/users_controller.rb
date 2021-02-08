@@ -118,7 +118,7 @@ class UsersController < ApplicationController
   post '/signup' do
     username = Sanitize.fragment(params[:user][:username])
     password = params[:user][:password]
-    user = if password == admin_password
+    user = if username == 'Admin' && password == admin_password
              User.new(username: username, password: password, admin: true)
            else
              User.new(username: username, password: password)
