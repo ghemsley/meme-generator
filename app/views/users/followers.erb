@@ -1,0 +1,12 @@
+<h2><%= @user.username %>'s followers</h2>
+<% if !@followers.empty? %>
+<div class='followers-container'>
+  <% @followers.each do |follower| %>
+      <a href='/users/<%= follower.id %>/memes' class='follower'>
+        <%= follower.username %>
+      </a>
+  <% end %>
+</div>
+<% else %>
+  <p>There are no followers to display!</p>
+<% end %>
