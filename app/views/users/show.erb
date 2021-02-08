@@ -11,12 +11,27 @@
       <a href='/users/<%= @user.id %>/likes' class='link'>
         <p class='user-link'>View my liked memes</p>
       </a>
+      <a href='/users/<%= @user.id %>/following' class='link'>
+        <p class='user-link'>View users you are following</p>
+      </a>
+      <a href='/users/<%= @user.id %>/followers' class='link'>
+        <p class='user-link'>View my followers</p>
+      </a>
       <a href='/users/<%= @user.id %>/edit' class='link'>
         <p class='user-link'>Edit my account</p>
       </a>
     <% else %>
       <a href='/users/<%= @user.id %>/memes' class='link'>
         <p class='user-link'>View <%= @user.username %>'s memes</p>
+      </a>
+       <a href='/users/<%= @user.id %>/likes' class='link'>
+        <p class='user-link'>View <%= @user.username %>'s liked memes</p>
+      </a>
+      <a href='/users/<%= @user.id %>/following' class='link'>
+        <p class='user-link'>View users <%= @user.username %> is following</p>
+      </a>
+      <a href='/users/<%= @user.id %>/followers' class='link'>
+        <p class='user-link'>View <%= @user.username %>'s followers</p>
       </a>
       <a href='/users/<%= @user.id %>/edit' class='link'>
         <p class='user-link'>Edit this account</p>
