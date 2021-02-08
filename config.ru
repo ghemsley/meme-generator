@@ -9,4 +9,5 @@ use UsersController
 use MemesController
 use CommentsController
 use LikesController
+use FollowsController
 run ApplicationController

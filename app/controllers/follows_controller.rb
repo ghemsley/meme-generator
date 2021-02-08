@@ -4,7 +4,7 @@ class FollowsController < ApplicationController
   post '/follows' do
     if signed_in?
       user = current_user
-      if user && user.id == params[:like][:user_id].to_i
+      if user && user.id == params[:follow][:follower_id].to_i
         follow = Follow.new
         follow.follower_id = user.id
         follow.followed_user_id = User.find_by_id(params[:follow][:user_id])&.id
@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
         else
           flash[:error] = 'Error: Failed to follow user'
         end
-        redirect "/users/#{params[:follow][:user_id]}"
+        redirect "/users/#{params[:follow][:user_id]}/memes"
       else
         flash[:error] = 'Error: Failed getting current user'
         redirect '/signin'
@@ -37,7 +37,7 @@ class FollowsController < ApplicationController
       else
         flash[:error] = 'Error: You do not have the required permissions'
       end
-      redirect "/users/#{user_id}"
+      redirect "/users/#{user_id}/memes"
     else
       flash[:error] = 'Error: You are not signed in'
       redirect '/signin'
