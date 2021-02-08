@@ -3,7 +3,34 @@
     Moderate this account
   </a>
 <% end %>
-<h1><%= @user.username %>'s memes</h1>
+<h2><%= @user.username %></h2>
+<% if signed_in? && current_user.id != @user.id && !current_user.followings.find_by_id(@user.id) %>
+  <form action='/follows' method='POST'>
+    <input type='hidden' name='follow[user_id]' value='<%= @user.id %>'>
+    <input type='hidden' name='follow[follower_id]' value='<%= current_user.id %>'>
+    <input type='submit' value='Follow <%= @user.username %>' class='link submit-button'>
+  <form>
+<% end %>
+<% if signed_in? && current_user.followings.find_by_id(@user.id) %>
+  <form action='/follows/<%= Follow.where(follower_id: current_user.id, followed_user_id: @user.id)&.id %>' method='POST'>
+    <input type='hidden' name='_method' value='DELETE'>
+    <input type='hidden' name='follow[user_id]' value='<%= @user.id %>'>
+    <input type='hidden' name='follow[follower_id]' value='<%= current_user.id %>'>
+    <input type='submit' value='Unfollow <%= @user.username %>' class='link submit-button'>
+  <form>
+<% end %>
+<div class='user-info'>
+  <p>Member since <%=  @user.created_at.localtime.to_formatted_s(:short) %></p>
+  <% if !@user.followers.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/followers'><%= @user.followers.count %> follower<%= @user.followings.count > 1 ? 's' : '' %></a>
+  <% end %>
+  <% if !@user.followings.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/following'>Following <%= @user.followings.count %> user<%= @user.followings.count > 1 ? 's' : '' %></a>
+  <% end %>
+</div>
+<h3><%= @user.username %>'s memes</h3>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
     <% @memes.reverse.each do |meme| %>
