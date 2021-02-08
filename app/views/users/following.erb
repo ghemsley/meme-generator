@@ -1,0 +1,12 @@
+<h2>Users <%= @user.username %> follows</h2>
+<% if !@followings.empty? %>
+<div class='followings-container'>
+  <% @followings.each do |following| %>
+      <a href='/users/<%= following.id %>/memes' class='following'>
+        <%= following.username %>
+      </a>
+  <% end %>
+</div>
+<% else %>
+  <p>You aren't following any users!</p>
+<% end %>
