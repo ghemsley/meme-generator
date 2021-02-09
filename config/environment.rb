@@ -1,11 +1,12 @@
-ENV['SINATRA_ENV'] ||= 'development'
+ENV['SINATRA_ENV'] ||= 'production'
+# ENV['SINATRA_ENV'] ||= 'development'
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-if ENV['SINATRA_ENV'] == 'development'
-  set :database, { adapter: 'sqlite3', database: "db/#{ENV['SINATRA_ENV']}.sqlite3" }
-end
+#set :database, { adapter: 'sqlite3', database: "db/#{ENV['SINATRA_ENV']}.sqlite3" }
+set :database, { adapter: 'postgresql', database: ENV['DATABASE_URL'] || 'postgres://localhost/memegenerator' }
+
 
 require_all './app'
 
