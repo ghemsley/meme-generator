@@ -1,44 +1,74 @@
-<h1><%= @user.username %>'s account</h1>
-<div class='users-container'>
-  <div class='user-links'>
-    <% if @user.id == current_user.id %>
-      <a href='/memes/new' class='link'>
-        <p class='user-link'>Create a new meme</p>
-      </a>
-      <a href='/users/<%= @user.id %>/memes' class='link'>
-        <p class='user-link'>View my memes</p>
-      </a>
-      <a href='/users/<%= @user.id %>/feed' class='link'>
-        <p class='user-link'>View your feed</p>
-      </a>
+<% if @user.id == current_user.id %>
+  <h2 class='header2'><%= @user.username %>'s account</h2>
+<% else %>
+  <h2 class='header2'><%= @user.username %></h2>
+<% end %>
+<div class='user-info'>
+  <p>Member since <%=  @user.created_at.localtime.to_formatted_s(:short) %></p>
+  <% if !@user.followers.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/followers'><%= @user.followers.count %> follower<%= @user.followings.count > 1 ? 's' : '' %></a>
+  <% end %>
+  <% if !@user.followings.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/following'>Following <%= @user.followings.count %> user<%= @user.followings.count > 1 ? 's' : '' %></a>
+  <% end %>
+</div>
+<% if signed_in? && current_user.id != @user.id && !current_user.followings.find_by_id(@user.id) %>
+  <form action='/follows' method='POST'>
+    <input type='hidden' name='follow[user_id]' value='<%= @user.id %>'>
+    <input type='hidden' name='follow[follower_id]' value='<%= current_user.id %>'>
+    <input type='submit' value='Follow' class='link submit-button follow'>
+  </form>
+<% end %>
+<% if signed_in? && current_user.followings.find_by_id(@user.id) %>
+  <form action='/follows/<%= Follow.find_by(follower_id: current_user.id, followed_user_id: @user.id)&.id %>' method='POST'>
+    <input type='hidden' name='_method' value='DELETE'>
+    <input type='hidden' name='follow[user_id]' value='<%= @user.id %>'>
+    <input type='hidden' name='follow[follower_id]' value='<%= current_user.id %>'>
+    <input type='submit' value='Unfollow' class='link submit-button follow'>
+  </form>
+<% end %>
+<div class='user-links'>
+  <% if @user.id == current_user.id %>
+    <a href='/memes/new' class='link'>
+      <p class='user-link'>Create a new meme</p>
+    </a>
+    <a href='/users/<%= @user.id %>/memes' class='link'>
+      <p class='user-link'>View my memes</p>
+    </a>
+    <a href='/users/<%= @user.id %>/feed' class='link'>
+      <p class='user-link'>View your feed</p>
+    </a>
+    <a href='/users/<%= @user.id %>/likes' class='link'>
+      <p class='user-link'>View my liked memes</p>
+    </a>
+    <a href='/users/<%= @user.id %>/following' class='link'>
+      <p class='user-link'>View users you are following</p>
+    </a>
+    <a href='/users/<%= @user.id %>/followers' class='link'>
+      <p class='user-link'>View my followers</p>
+    </a>
+    <a href='/users/<%= @user.id %>/edit' class='link'>
+      <p class='user-link'>Edit my account</p>
+    </a>
+  <% else %>
+    <a href='/users/<%= @user.id %>/memes' class='link'>
+      <p class='user-link'>View <%= @user.username %>'s memes</p>
+    </a>
       <a href='/users/<%= @user.id %>/likes' class='link'>
-        <p class='user-link'>View my liked memes</p>
-      </a>
-      <a href='/users/<%= @user.id %>/following' class='link'>
-        <p class='user-link'>View users you are following</p>
-      </a>
-      <a href='/users/<%= @user.id %>/followers' class='link'>
-        <p class='user-link'>View my followers</p>
-      </a>
-      <a href='/users/<%= @user.id %>/edit' class='link'>
-        <p class='user-link'>Edit my account</p>
-      </a>
-    <% else %>
-      <a href='/users/<%= @user.id %>/memes' class='link'>
-        <p class='user-link'>View <%= @user.username %>'s memes</p>
-      </a>
-       <a href='/users/<%= @user.id %>/likes' class='link'>
-        <p class='user-link'>View <%= @user.username %>'s liked memes</p>
-      </a>
-      <a href='/users/<%= @user.id %>/following' class='link'>
-        <p class='user-link'>View users <%= @user.username %> is following</p>
-      </a>
-      <a href='/users/<%= @user.id %>/followers' class='link'>
-        <p class='user-link'>View <%= @user.username %>'s followers</p>
-      </a>
+      <p class='user-link'>View <%= @user.username %>'s liked memes</p>
+    </a>
+    <a href='/users/<%= @user.id %>/following' class='link'>
+      <p class='user-link'>View users <%= @user.username %> is following</p>
+    </a>
+    <a href='/users/<%= @user.id %>/followers' class='link'>
+      <p class='user-link'>View <%= @user.username %>'s followers</p>
+    </a>
+    <% if signed_in? && current_user.admin %>
       <a href='/users/<%= @user.id %>/edit' class='link'>
         <p class='user-link'>Edit this account</p>
       </a>
     <% end %>
-  </div>
+  <% end %>
 </div>
