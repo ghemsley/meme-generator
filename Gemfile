@@ -1,3 +1,4 @@
+ruby "2.6.6"
 source 'http://rubygems.org'
 
 gem 'activerecord'
