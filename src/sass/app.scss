@@ -960,3 +960,13 @@ form {
   line-height: 1.2em;
   color: #f4faff
 }
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+}
