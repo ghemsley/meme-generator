@@ -3,13 +3,26 @@
 require 'bundler/setup'
 Bundler.require(:default)
 
-#set :database, { adapter: 'sqlite3', database: "db/#{ENV['SINATRA_ENV']}.sqlite3" }
-set :database, { adapter: 'postgresql', database: ENV['DATABASE_URL'] || 'postgres://localhost/memegenerator' }
+configure :development do
+ set :database, { adapter: 'sqlite3', database: "db/development.sqlite3" }
+ set :show_exceptions, true
+end
 
-require_all './app'
+configure :production do
+ db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/memegenerator')
+
+ ActiveRecord::Base.establish_connection(
+   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+   :host     => db.host,
+   :username => db.user,
+   :password => db.password,
+   :database => db.path[1..-1],
+   :encoding => 'utf8'
+ )
+end
 
 CarrierWave.configure do |config|
   config.root = './public/'
 end
 
-ActiveRecord::Base.establish_connection(adapter: 'postgresql', encoding: 'utf8', database: ENV['DATABASE_URL'] || 'postgres://localhost/memegenerator')
+require_all './app'
