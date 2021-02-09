@@ -27,7 +27,7 @@ class FollowsController < ApplicationController
     if signed_in?
       user = current_user
       follow = Follow.find_by_id(params[:id])
-      user_id = Follow.followed_user.id
+      user_id = follow.followed_user.id
       if user.id == follow.follower.id
         if follow.destroy
           flash[:success] = 'Success: Unfollowed a user!'
