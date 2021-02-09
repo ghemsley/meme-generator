@@ -8,7 +8,7 @@ class MemesController < ApplicationController
         erb :'memes/new'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
@@ -34,11 +34,14 @@ class MemesController < ApplicationController
         meme.original_image = original_image
         if meme.save
           flash[:success] = 'Success: Created a new meme!'
+          redirect "/users/#{user.id}/memes"
         else
           flash[:error] = 'Error: Failed to create meme, try a different name'
+          redirect '/memes/new'
         end
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
@@ -55,11 +58,11 @@ class MemesController < ApplicationController
           erb :"memes/edit"
         else
           flash[:error] = "Error: failed to find meme with id #{params[:id]}"
-          redirect "/users/#{@user.id}"
+          redirect "/users/#{@user.id}/memes"
         end
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
@@ -76,11 +79,11 @@ class MemesController < ApplicationController
           erb :'memes/show'
         else
           flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
-          redirect "/"
+          redirect '/'
         end
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     elsif !session[:user_id]
       @meme = Meme.find_by_id(params[:id])
@@ -90,15 +93,15 @@ class MemesController < ApplicationController
           erb :'memes/show'
         else
           flash[:error] = "Error: Failed to find user with id #{@meme.user.id}"
-          redirect '/signin'
+          redirect '/'
         end
       else
         flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: Could not find page at that url'
-      redirect '/signin'
+      redirect '/'
     end
   end
 
@@ -122,15 +125,15 @@ class MemesController < ApplicationController
             end
           else
             flash[:error] = "Error: You don't have access to this meme"
-            redirect "/users/#{user.id}"
+            redirect "/users/#{user.id}/memes"
           end
         else
           flash[:error] = "Error: Failed to find meme with id #{params[:id]}"
-          redirect "/users/#{user.id}"
+          redirect "/users/#{user.id}/memes"
         end
       else
-        flash[:error] = 'Error: You are not signed in'
-        redirect '/signin'
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
@@ -156,8 +159,8 @@ class MemesController < ApplicationController
           redirect "/users/#{user.id}/memes"
         end
       else
-        flash[:error] = "Error: Failed to find user with id #{params[:id]}"
-        redirect '/signin'
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'

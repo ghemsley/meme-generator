@@ -16,10 +16,11 @@ class LikesController < ApplicationController
         redirect "/memes/#{params[:like][:meme_id]}"
       else
         flash[:error] = 'Error: Failed getting current user'
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
+      redirect '/signin'
     end
   end
 

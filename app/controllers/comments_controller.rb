@@ -17,10 +17,11 @@ class CommentsController < ApplicationController
         redirect "/memes/#{params[:comment][:meme_id]}"
       else
         flash[:error] = 'Error: Failed getting current user'
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
+      redirect '/signin'
     end
   end
 
@@ -35,10 +36,10 @@ class CommentsController < ApplicationController
         else
           flash[:error] = 'Error: Failed to delete comment'
         end
-        redirect "/memes/#{meme_id}"
       else
         flash[:error] = 'Error: You do not have the required permissions'
       end
+      redirect "/memes/#{meme_id}"
     else
       flash[:error] = 'Error: You are not signed in'
       redirect '/signin'

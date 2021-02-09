@@ -23,10 +23,10 @@ class SessionsController < ApplicationController
     if session[:user_id]
       session.delete(:user_id)
       flash[:success] = 'Success: You have been signed out!'
-      redirect '/signin'
+      redirect '/'
     else
       flash[:error] = 'Error: You are already signed out'
-      redirect 'signin'
+      redirect '/'
     end
   end
 end
