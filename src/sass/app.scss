@@ -970,3 +970,20 @@ form {
   align-items: center;
   column-gap: 16px;
 }
+
+.follower {
+  margin: auto;
+  max-width: fit-content;
+  background-color: #2B66B3;
+  transition: 150ms ease all;
+  color: white !important;
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: larger;
+  border-radius: 6px;
+  &:hover{
+    transform: scale(1.025);
+    background-color: #3783E6;
+  }
+}

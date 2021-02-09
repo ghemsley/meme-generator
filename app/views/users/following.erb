@@ -2,7 +2,7 @@
 <% if !@followings.empty? %>
 <div class='followings-container'>
   <% @followings.each do |following| %>
-      <a href='/users/<%= following.id %>/memes' class='following'>
+      <a href='/users/<%= following.id %>/memes' class='follower'>
         <%= following.username %>
       </a>
   <% end %>

@@ -1,10 +1,10 @@
-<h1>Memes</h1>
+<h2>Memes</h2>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
     <% @memes.reverse.each do |meme| %>
     <a href='/memes/<%= meme.id %>' class='meme-link'>
       <div class='meme'>
-        <h2 class='meme-name'><%= meme.name %></h2>
+        <h3 class='meme-name'><%= meme.name %></h3>
         <p>Author: <%= meme.user.username %></p>
         <img class='meme-image' src='<%= meme.image.url %>' />
         <div class='likes-comments'>
