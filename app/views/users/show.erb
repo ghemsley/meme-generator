@@ -1,4 +1,4 @@
-<% if @user.id == current_user.id %>
+<% if signed_in? && @user.id == current_user.id %>
   <h2 class='header2'><%= @user.username %>'s account</h2>
 <% else %>
   <h2 class='header2'><%= @user.username %></h2>
@@ -7,7 +7,7 @@
   <p>Member since <%=  @user.created_at.localtime.to_formatted_s(:short) %></p>
   <% if !@user.followers.empty? %>
     <p>|</p>
-    <a href='/users/<%= @user.id %>/followers'><%= @user.followers.count %> follower<%= @user.followings.count > 1 ? 's' : '' %></a>
+    <a href='/users/<%= @user.id %>/followers'><%= @user.followers.count %> follower<%= @user.followers.count > 1 ? 's' : '' %></a>
   <% end %>
   <% if !@user.followings.empty? %>
     <p>|</p>
