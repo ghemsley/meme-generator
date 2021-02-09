@@ -4,6 +4,7 @@ require 'securerandom'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'sanitize'
+require 'digest'
 class ApplicationController < Sinatra::Base
   configure do
     set :server, :puma
@@ -12,7 +13,7 @@ class ApplicationController < Sinatra::Base
     use Rack::MethodOverride
     use Rack::Session::Cookie, key: 'rack.session',
                                path: '/',
-                               secret: SecureRandom.hex(64)
+                               secret: Digest::SHA256.digest(ENV['SINATRA_SESSION_SECRET'])
     register(Sinatra::JS)
     register(Sinatra::Flash)
   end
