@@ -4,7 +4,7 @@ require 'bundler/setup'
 Bundler.require(:default)
 
 #set :database, { adapter: 'sqlite3', database: "db/#{ENV['SINATRA_ENV']}.sqlite3" }
-#set :database, { adapter: 'postgresql', database: ENV['DATABASE_URL'] || 'postgres://localhost/memegenerator' }
+set :database, { adapter: 'postgresql', database: ENV['DATABASE_URL'] || 'postgres://localhost/memegenerator' }
 
 require_all './app'
 
