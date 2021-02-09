@@ -1,14 +1,36 @@
 require './config/environment'
 class UsersController < ApplicationController
+  get '/users/:id/feed' do
+    if session[:user_id] == params[:id].to_i
+      @user = current_user
+      if @user
+        @memes = []
+        @user.followings.each do |following|
+          following.memes.each do |meme|
+            @memes.push(meme)
+          end
+        end
+        @memes.sort_by!(&:id)
+        erb :'users/feed'
+      else
+        flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
+        redirect '/'
+      end
+    else
+      flash[:error] = 'Error: Insufficent authorization to view this page'
+      redirect '/'
+    end
+  end
+
   get '/users/:id/followers' do
-    if session[:user_id] == params[:id]
+    if session[:user_id] == params[:id].to_i
       @user = current_user
       if @user
         @followers = @user.followers
         erb :'users/followers'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     elsif params[:id]
       @user = User.find_by_id(params[:id])
@@ -21,19 +43,19 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = 'Error: Insufficent authorization to view this page'
-      redirect '/signin'
+      redirect '/'
     end
   end
 
   get '/users/:id/following' do
-    if session[:user_id] == params[:id]
+    if session[:user_id] == params[:id].to_i
       @user = current_user
       if @user
         @followings = @user.followings
         erb :'users/following'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     elsif params[:id]
       @user = User.find_by_id(params[:id])
@@ -46,19 +68,19 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = 'Error: Insufficent authorization to view this page'
-      redirect '/signin'
+      redirect '/'
     end
   end
 
   get '/users/:id/likes' do
-    if session[:user_id] == params[:id]
+    if session[:user_id] == params[:id].to_i
       @user = current_user
       if @user
         @likes = @user.likes
         erb :'users/likes'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     elsif params[:id]
       @user = User.find_by_id(params[:id])
@@ -71,19 +93,19 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = 'Error: Insufficent authorization to view this page'
-      redirect '/signin'
+      redirect '/'
     end
   end
 
   get '/users/:id/memes' do
-    if session[:user_id] == params[:id]
+    if session[:user_id] == params[:id].to_i
       @user = current_user
       if @user
         @memes = @user.memes
         erb :'users/memes'
       else
         flash[:error] = "Error: Failed to find user with id #{session[:user_id]}"
-        redirect '/signin'
+        redirect '/'
       end
     elsif params[:id]
       @user = User.find_by_id(params[:id])
@@ -96,7 +118,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = 'Error: Insufficent authorization to view this page'
-      redirect '/signin'
+      redirect '/'
     end
   end
 
@@ -108,7 +130,7 @@ class UsersController < ApplicationController
           erb :'users/edit'
         else
           flash[:error] = "Error: Failed to find user with id #{params[:id]}"
-          redirect '/signin'
+          redirect '/'
         end
       elsif session[:user_id] != params[:id].to_i
         if current_user.admin
@@ -116,11 +138,11 @@ class UsersController < ApplicationController
           erb :'users/edit'
         else
           flash[:error] = 'Error: Insufficient authorization to view this page'
-          redirect '/signin'
+          redirect '/'
         end
       else
         flash[:error] = 'Error: Insufficent authorization to view this page'
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
@@ -138,7 +160,7 @@ class UsersController < ApplicationController
         erb :'users/show'
       else
         flash[:error] = 'Error: Insufficent authorization to view this page'
-        redirect '/signin'
+        redirect '/'
       end
     else
       flash[:error] = 'Error: You are not signed in'
