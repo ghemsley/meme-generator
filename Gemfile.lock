@@ -134,6 +134,7 @@ DEPENDENCIES
   pg
   pry
   puma
+  rack
   rack-contrib
   rake
   require_all
@@ -147,6 +148,9 @@ DEPENDENCIES
   sqlite3
   thin
   tux
+
+RUBY VERSION
+   ruby 2.6.1p33
 
 BUNDLED WITH
    2.2.6

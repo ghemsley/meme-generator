@@ -1,3 +1,4 @@
+ruby '2.6.1'
 source 'http://rubygems.org'
 
 gem 'activerecord'
@@ -6,6 +7,7 @@ gem 'carrierwave'
 gem 'json'
 gem 'pg'
 gem 'puma'
+gem 'rack'
 gem 'rack-contrib'
 gem 'rake'
 gem 'require_all'
