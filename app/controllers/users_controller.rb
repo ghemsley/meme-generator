@@ -151,30 +151,25 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    if signed_in?
-      if !current_user.admin && current_user.id == params[:id].to_i
-        @user = current_user
-        if @user
-          erb :'users/show'
-        else
-          flash[:error] = "Error finding user with id #{params[:id]}"
-          redirect '/'
-        end
-      elsif current_user.admin || current_user.id != params[:id].to_i
-        @user = User.find_by_id(params[:id])
-        if @user
-          erb :'users/show'
-        else
-          flash[:error] = "Error finding user with id #{params[:id]}"
-          redirect '/'
-        end
+    if !current_user.admin && signed_in? && current_user.id == params[:id].to_i
+      @user = current_user
+      if @user
+        erb :'users/show'
       else
-        flash[:error] = 'Error: Insufficent authorization to view this page'
+        flash[:error] = "Error finding user with id #{params[:id]}"
+        redirect '/'
+      end
+    elsif (signed_in? && current_user.admin) || current_user.id != params[:id].to_i || !signed_in?
+      @user = User.find_by_id(params[:id])
+      if @user
+        erb :'users/show'
+      else
+        flash[:error] = "Error finding user with id #{params[:id]}"
         redirect '/'
       end
     else
-      flash[:error] = 'Error: You are not signed in'
-      redirect '/signin'
+      flash[:error] = 'Error: Insufficent authorization to view this page'
+      redirect '/'
     end
   end
 
