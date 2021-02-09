@@ -36,7 +36,7 @@
         <input type='submit' value='Unlike' class='link like-button unlike-button'>
       </form>
     <% end %>
-    <% if ( @user == current_user && @user.id == @meme.user.id ) || @user.admin %>
+    <% if (signed_in? && @user == current_user && @user.id == @meme.user.id) || (signed_in? && @user.admin) %>
         <a href='/memes/<%= @meme.id %>/edit' class='link'>
           <div>Edit</div>
         </a>
@@ -62,10 +62,10 @@
   <div class='comments-container'>
     <% @meme.comments.each do |comment| %>
       <div class='comment'>
-        <p><%= comment.user.username %> says:</p>
+        <p><a href='/users/<%= comment.user.id %>'><%= comment.user.username %></a> says:</p>
         <p class='comment-text'><%= comment.text %></p>
         <p> Posted <%= comment.created_at.localtime.to_formatted_s(:short) %></p>
-        <% if ( @user == current_user && @user.id == comment.user.id ) || @user.admin %>
+        <% if (signed_in? && @user == current_user && @user.id == comment.user.id) || (signed_in? && @user.admin) %>
           <form action="/comments/<%= comment.id %>" method='POST'>
             <input type='hidden' name='_method' value='DELETE'>
             <input type='submit' value='Delete' class='delete-button'>
