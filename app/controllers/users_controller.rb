@@ -151,7 +151,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    if !current_user.admin && signed_in? && current_user.id == params[:id].to_i
+    if signed_in? && current_user.id == params[:id].to_i
       @user = current_user
       if @user
         erb :'users/show'
@@ -159,7 +159,7 @@ class UsersController < ApplicationController
         flash[:error] = "Error finding user with id #{params[:id]}"
         redirect '/'
       end
-    elsif (signed_in? && current_user.admin) || current_user.id != params[:id].to_i || !signed_in?
+    elsif (signed_in? && current_user.admin) || (signed_in? && current_user.id != params[:id].to_i) || !signed_in?
       @user = User.find_by_id(params[:id])
       if @user
         erb :'users/show'
