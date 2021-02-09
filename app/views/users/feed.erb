@@ -1,4 +1,4 @@
-<h2><%= @user.username %>'s feed</h2>
+<h2 class='header2'><%= @user.username %>'s feed</h2>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
     <% @memes.reverse.each do |meme| %>

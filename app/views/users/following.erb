@@ -1,12 +1,17 @@
-<h2>Users <%= @user.username %> follows</h2>
+<% if signed_in? && current_user&.admin %>
+  <a href='/users/<%= @user.id %>'>
+    Moderate this account
+  </a>
+<% end %>
+<h2 class='header2'>Users <%= @user.username %> follows</h2>
 <% if !@followings.empty? %>
 <div class='followings-container'>
   <% @followings.each do |following| %>
-      <a href='/users/<%= following.id %>/memes' class='follower'>
+      <a href='/users/<%= following.id %>' class='follower'>
         <%= following.username %>
       </a>
   <% end %>
 </div>
 <% else %>
-  <p>You aren't following any users!</p>
+  <p>There are no users to display!</p>
 <% end %>

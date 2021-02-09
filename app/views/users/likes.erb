@@ -1,9 +1,9 @@
 <% if signed_in? && current_user&.admin %>
-  <a href='/users/<%= @user.id %>/edit'>
+  <a href='/users/<%= @user.id %>'>
     Moderate this account
   </a>
 <% end %>
-<h1><%= @user.username %>'s likes</h1>
+<h2 class='header2'><%= @user.username %>'s likes</h2>
 <% if !@user.likes&.empty? %>
   <div class='memes-container'>
     <% @user.likes.reverse.each do |like| %>

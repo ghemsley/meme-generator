@@ -496,6 +496,7 @@ nav {
   row-gap: 32px;
   flex-wrap: wrap;
   flex-basis: 320px;
+  margin-top: 0px;
   margin: 16px;
   justify-content: center;
   align-items: center;
@@ -766,16 +767,10 @@ div.tns-controls {
   display: none;
 }
 
-.latest-memes-header {
-  font-family: Impact;
-  font-size: 2em;
-  text-transform: uppercase;
-  color: white !important;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
-    -2px 2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000,
-    -2px 0px 0 #000, 2px 2px 4px #000;
+.header2 {
+  color: white;
   margin: auto;
+  margin-bottom: 16px;
   margin-top: 16px;
   padding: 16px;
   padding-left: 32px;
@@ -969,6 +964,16 @@ form {
   justify-content: center;
   align-items: center;
   column-gap: 16px;
+  margin-bottom: 16px;
+  a {
+    margin: 0px;
+    padding: 0px;
+  }
+  p {
+    margin: 0px;
+    padding: 0px;
+    max-width: fit-content;
+  }
 }
 
 .follower {
@@ -986,4 +991,9 @@ form {
     transform: scale(1.025);
     background-color: #3783E6;
   }
+}
+
+.follow {
+  margin-bottom: 16px !important;
+  font-size: large !important;
 }
