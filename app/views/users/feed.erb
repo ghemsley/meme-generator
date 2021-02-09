@@ -1,0 +1,24 @@
+<h2><%= @user.username %>'s feed</h2>
+<% if !@memes&.empty? %>
+  <div class='memes-container'>
+    <% @memes.reverse.each do |meme| %>
+    <a href='/memes/<%= meme.id %>' class='meme-link'>
+      <div class='meme'>
+        <h3 class='meme-name'><%= meme.name %></h3>
+        <p>Author: <%= meme.user.username %></p>
+        <img class='meme-image' src='<%= meme.image.url %>' />
+        <div class='likes-comments'>
+          <% if !meme.likes.empty? %>
+            <p><%= meme.likes.count %> like<%= meme.likes.count > 1 ? 's' : '' %></p>
+          <% end %>
+          <% if !meme.comments.empty? %>
+            <p><%= meme.comments.count %> comment<%= meme.comments.count > 1 ? 's' : '' %></p>
+          <% end %>
+        </div>
+      </div>
+    </a>
+    <% end %>
+  </div>
+<% else %>
+  <p>There are no memes to display. Go follow some more users to see some here!</p>
+<% end %>
