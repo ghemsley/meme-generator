@@ -133,7 +133,7 @@ class UsersController < ApplicationController
           redirect '/'
         end
       elsif session[:user_id] != params[:id].to_i
-        if current_user.admin
+        if current_user&.admin
           @user = User.find_by_id(params[:id].to_i)
           erb :'users/edit'
         else
@@ -151,7 +151,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    if signed_in? && current_user.id == params[:id].to_i
+    if signed_in? && current_user&.id == params[:id].to_i
       @user = current_user
       if @user
         erb :'users/show'
@@ -159,7 +159,7 @@ class UsersController < ApplicationController
         flash[:error] = "Error finding user with id #{params[:id]}"
         redirect '/'
       end
-    elsif (signed_in? && current_user.admin) || (signed_in? && current_user.id != params[:id].to_i) || !signed_in?
+    elsif (signed_in? && current_user&.admin) || (signed_in? && current_user&.id != params[:id].to_i) || !signed_in?
       @user = User.find_by_id(params[:id])
       if @user
         erb :'users/show'
@@ -175,7 +175,7 @@ class UsersController < ApplicationController
 
   get '/users' do
     if signed_in?
-      if current_user.admin
+      if current_user&.admin
         @users = User.all
         erb :"users/index"
       else
@@ -212,7 +212,7 @@ class UsersController < ApplicationController
   patch '/users/:id' do
     if signed_in?
       user = current_user
-      if user.id == params[:id].to_i || user.admin
+      if user&.id == params[:id].to_i || user&.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
           if user.id == params[:id].to_i
             user.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
@@ -224,7 +224,7 @@ class UsersController < ApplicationController
               flash[:error] = 'Error: Failed to save account info, username may be taken or invalid'
               redirect "/users/#{params[:id]}/edit"
             end
-          elsif user.admin
+          elsif user&.admin
             user_to_edit = User.find_by_id(params[:id])
             user_to_edit.username = Sanitize.fragment(params[:user][:username]) if params[:user][:username]
             user_to_edit.password = params[:user][:new_password] if params[:user][:new_password]
@@ -256,7 +256,7 @@ class UsersController < ApplicationController
   delete '/users/:id' do
     if signed_in?
       user = current_user
-      if user.id == params[:id].to_i || user.admin
+      if user&.id == params[:id].to_i || user&.admin
         if params[:user][:password] && user.authenticate(params[:user][:password])
           if user.id == params[:id].to_i
             if user.destroy
@@ -267,7 +267,7 @@ class UsersController < ApplicationController
               flash[:error] = 'Error: Failed to delete account'
               redirect "/users/#{params[:id]}/edit"
             end
-          elsif user.admin
+          elsif user&.admin
             user_to_delete = User.find_by_id(params[:id])
             if user_to_delete.destroy
               flash[:success] = 'Success: deleted account!'
