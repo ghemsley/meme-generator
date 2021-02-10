@@ -5,7 +5,7 @@
 <% end %>
 <h2 class='header2'>Users <%= @user.username %> follows</h2>
 <% if !@followings.empty? %>
-<div class='followings-container'>
+<div class='followers-container'>
   <% @followings.each do |following| %>
       <a href='/users/<%= following.id %>' class='follower'>
         <%= following.username %>

@@ -997,3 +997,13 @@ form {
   margin-bottom: 16px !important;
   font-size: large !important;
 }
+
+.followers-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  row-gap: 16px;
+}
