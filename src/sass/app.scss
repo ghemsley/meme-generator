@@ -126,18 +126,16 @@
 }
 
 html {
-  font-family: Nunito, 'Nunito', -apple-system,
-    BlinkMacSystemFont, 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial,
-    sans-serif;
+  font-family: Nunito, 'Nunito', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   height: 100%;
   margin: 0px;
 }
 
 body {
   background: #e0f0ff;
-  font-family: Nunito, 'Nunito', -apple-system,
-    BlinkMacSystemFont, 'Noto Sans', 'Segoe UI', 'Helvetica Neue', Arial,
-    sans-serif;
+  font-family: Nunito, 'Nunito', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   height: 100%;
   margin: 0px;
 }
@@ -152,13 +150,13 @@ li {
 
 a,
 a :visited :active {
-  color: #2B66B3;
+  color: #2b66b3;
   text-decoration: none;
   transition: all ease 150ms;
 }
 a:hover {
   transition: all ease 150ms !important;
-  color: #3783E6;
+  color: #3783e6;
 }
 ul {
   margin-bottom: 0px;
@@ -180,7 +178,7 @@ nav {
   a {
     div {
       transition: all ease 150ms;
-      background: #2B66B3;
+      background: #2b66b3;
       margin: 0px;
       padding: 0.333em;
       padding-left: 1em;
@@ -191,13 +189,13 @@ nav {
       height: max-content;
       box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.12),
         1px 6px 10px rgba(39, 44, 49, 0.06);
-        transform: scale(1);
+      transform: scale(1);
       &:hover {
         transform: scale(1.05);
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
           1px 6px 10px rgba(39, 44, 49, 0.12);
         color: white;
-        background: #3783E6;
+        background: #3783e6;
       }
     }
   }
@@ -240,7 +238,7 @@ nav {
 
 .footer {
   height: 80px;
-  background: #183A66;
+  background: #183a66;
 }
 
 .push {
@@ -250,7 +248,7 @@ nav {
 .header {
   position: relative;
   box-sizing: border-box;
-  background: #183A66;
+  background: #183a66;
   color: white;
   left: 0px;
   width: 100%;
@@ -273,7 +271,7 @@ nav {
     padding: 16px;
     padding-left: 32px;
     padding-right: 32px;
-    background-color: #7EADEA;
+    background-color: #7eadea;
     width: fit-content;
     border-radius: 6px;
   }
@@ -333,11 +331,11 @@ nav {
 }
 
 .flash-error {
-  background-color: #E65D4E;
+  background-color: #e65d4e;
 }
 
 .flash-success {
-  background-color: #3783E6;
+  background-color: #3783e6;
 }
 
 .flash-info {
@@ -363,7 +361,7 @@ nav {
     .submit-button,
     .file-upload {
       transition: all ease 150ms;
-      background: #3783E6;
+      background: #3783e6;
       margin: auto;
       margin-bottom: 0.35em;
       padding: 0.333em;
@@ -569,7 +567,7 @@ nav {
   div {
     font-size: larger;
     transition: all ease 150ms;
-    background: #2B66B3;
+    background: #2b66b3;
     min-width: 3em;
     margin: 0px;
     padding: 0.43em;
@@ -586,7 +584,7 @@ nav {
       box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
       color: white;
-      background: #3783E6;
+      background: #3783e6;
     }
   }
 }
@@ -603,7 +601,7 @@ nav {
     .user-link {
       text-align: center;
       transition: all ease 150ms;
-      background: #2B66B3;
+      background: #2b66b3;
       margin: auto;
       padding: 0.333em;
       padding-left: 1em;
@@ -618,7 +616,7 @@ nav {
         box-shadow: 6px 12px 20px rgba(39, 44, 49, 0.24),
           1px 6px 10px rgba(39, 44, 49, 0.12);
         color: white;
-        background: #3783E6;
+        background: #3783e6;
       }
     }
   }
@@ -633,7 +631,7 @@ form {
     font-family: 'Nunito';
     font-size: larger;
     transition: all ease 150ms;
-    background: #2B66B3;
+    background: #2b66b3;
     margin: auto;
     padding: 0.333em;
     padding-left: 1em;
@@ -656,7 +654,7 @@ form {
   .link {
     font-size: larger;
     transition: all ease 150ms;
-    background: #2B66B3;
+    background: #2b66b3;
     margin: 0px;
     padding: 0.5em;
     padding-left: 1em;
@@ -671,7 +669,7 @@ form {
     &:hover {
       transform: scale(1.06);
       color: white;
-      background: #3783E6;
+      background: #3783e6;
       box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.24),
         1px 6px 10px rgba(39, 44, 49, 0.12);
     }
@@ -691,8 +689,11 @@ form {
 .delete-button {
   color: white !important;
   margin: auto;
-  background-color: #3783E6 !important;
+  background-color: #2b66b3 !important;
+  border-color: transparent !important;
+  transition: all ease 150ms;
   &:hover {
+    transform: scale(1.05);
     background-color: #f55d4c !important;
   }
 }
@@ -708,7 +709,7 @@ form {
       padding: 16px;
       border-radius: 6px;
       font-size: larger;
-      background-color: #3783E6;
+      background-color: #3783e6;
       border: none;
       transition: all ease 150ms;
       &:hover {
@@ -751,7 +752,7 @@ div.tns-controls {
     min-width: 7em;
     transition: 150ms all;
     &:hover {
-      background-color: #3783E6;
+      background-color: #3783e6;
       transform: scale(1.06);
       box-shadow: 6px 12px 20px rgba(84, 108, 133, 0.36),
         1px 6px 10px rgba(39, 44, 49, 0.18);
@@ -775,7 +776,7 @@ div.tns-controls {
   padding: 16px;
   padding-left: 32px;
   padding-right: 32px;
-  background-color: #2B66B3;
+  background-color: #2b66b3;
   width: fit-content;
   border-radius: 6px;
 }
@@ -815,10 +816,36 @@ div.tns-controls {
     justify-content: flex-start;
     align-items: flex-start;
     border-bottom: 1px solid gray;
-    .delete-button {
-      margin-top: -3em;
-      margin-right: -6em;
-      font-size: large;
+    div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width: fit-content;
+      margin-left: auto;
+      column-gap: 16px;
+      margin-top: -48px;
+      margin-bottom: 16px;
+      .edit-button {
+        font-size: large;
+        color: white !important;
+        padding: 4px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0px;
+        background-color: #2b66b3;
+        border-radius: 3px;
+        transition: all ease 150ms;
+        &:hover {
+          background-color: #3783e6;
+          transform: scale(1.05);
+        }
+      }
+      form input.delete-button {
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0px;
+        font-size: large;
+      }
     }
     .comment-text {
       font-family: 'Comic Sans', 'Comic Relief';
@@ -838,7 +865,7 @@ div.tns-controls {
 
 .account-info {
   font-size: smaller;
-  background-color: #374B66;
+  background-color: #374b66;
   padding: 8px;
   margin: 0px;
   color: white !important;
@@ -854,7 +881,7 @@ div.tns-controls {
 
 .create-meme {
   font-size: smaller;
-  background-color: #3783E6;
+  background-color: #3783e6;
   padding: 8px;
   margin: 0px;
   color: white !important;
@@ -877,12 +904,12 @@ form {
     padding: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
-    background-color: #2B66B3;
+    background-color: #2b66b3;
     transition: 150ms all;
     color: white;
     &:hover {
       transform: scale(1.025);
-      background-color: #3783E6 !important;
+      background-color: #3783e6 !important;
     }
   }
 
@@ -953,7 +980,7 @@ form {
   left: 0px;
   right: -1000px;
   line-height: 1.2em;
-  color: #f4faff
+  color: #f4faff;
 }
 
 .user-info {
@@ -979,7 +1006,7 @@ form {
 .follower {
   margin: auto;
   max-width: fit-content;
-  background-color: #2B66B3;
+  background-color: #2b66b3;
   transition: 150ms ease all;
   color: white !important;
   padding: 8px;
@@ -987,9 +1014,9 @@ form {
   padding-right: 16px;
   font-size: larger;
   border-radius: 6px;
-  &:hover{
+  &:hover {
     transform: scale(1.025);
-    background-color: #3783E6;
+    background-color: #3783e6;
   }
 }
 
