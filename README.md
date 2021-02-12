@@ -2,7 +2,7 @@
 
 A Sinatra/Activerecord app for generating tasty memes
 
-!(Meme Generator homepage)[./homepage.png]
+![Meme Generator homepage](./homepage.png)
 
 ## Installation
 
