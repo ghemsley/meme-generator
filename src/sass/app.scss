@@ -239,6 +239,27 @@ nav {
 .footer {
   height: 80px;
   background: #183a66;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+  p {
+    color: white;
+  }
+  a,
+  a:visited {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      color: #7eadea !important;
+    }
+  }
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
 }
 
 .push {
