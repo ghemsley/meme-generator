@@ -1,0 +1,11 @@
+<h2 class='header2'>Edit comment</h2>
+<div class='comment'>
+  <div class='form-container comment-form-container'>
+    <form class='comment-form' action='/comments/<%= @comment.id %>' method='POST'>
+      <input type='hidden' name='_method' value='PATCH'>
+      <input type='hidden' value='<%= @user.id %>' name='comment[user_id]'>
+      <textarea rows='5' placeholder='<%= @comment.text %>' name='comment[text]' maxlength='500' required ><%= @comment.text %></textarea>
+      <input type='submit' value='Submit' class='submit-button'>
+    </form>
+  </div>
+</div>
