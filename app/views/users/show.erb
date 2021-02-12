@@ -52,6 +52,11 @@
     <a href='/users/<%= @user.id %>/edit' class='link'>
       <p class='user-link'>Edit my account</p>
     </a>
+    <% if @user.admin %>
+      <a href='/users' class='link'>
+        <p class='user-link'>View all users</p>
+      </a>
+    <% end %>
   <% else %>
     <a href='/users/<%= @user.id %>/memes' class='link'>
       <p class='user-link'>View <%= @user.username %>'s memes</p>

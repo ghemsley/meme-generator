@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
         else
           flash[:error] = 'Error: Failed to follow user'
         end
-        redirect "/users/#{params[:follow][:user_id]}/memes"
+        redirect "/users/#{params[:follow][:user_id]}"
       else
         flash[:error] = 'Error: Failed getting current user'
         redirect '/signin'
@@ -37,7 +37,7 @@ class FollowsController < ApplicationController
       else
         flash[:error] = 'Error: You do not have the required permissions'
       end
-      redirect "/users/#{user_id}/memes"
+      redirect "/users/#{user_id}"
     else
       flash[:error] = 'Error: You are not signed in'
       redirect '/signin'
