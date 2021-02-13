@@ -1,11 +1,8 @@
 <h2 class='header2'>Users</h2>
-<div class='users-container'>
+<div class='followers-container'>
   <% @users.each do |user| %>
-    <div class='user'>
-      <h2><%= user.username %></h2>
-      <a href='/users/<%= user.id %>'>
-        Moderate
+      <a href='/users/<%= user.id %>' class='follower'>
+        <%= user.username %>
       </a>
-    </div>
   <% end %>
 </div>

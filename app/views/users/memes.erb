@@ -3,7 +3,7 @@
     Moderate this account
   </a>
 <% end %>
-<h2 class='header2'><%= @user.username %></h2>
+<h2 class='header2'><%= @user.username %>'s memes</h2>
 <% if signed_in? && current_user.id != @user.id && !current_user.followings.find_by_id(@user.id) %>
   <form action='/follows' method='POST'>
     <input type='hidden' name='follow[user_id]' value='<%= @user.id %>'>
@@ -19,7 +19,6 @@
     <input type='submit' value='Unfollow' class='link submit-button follow'>
   </form>
 <% end %>
-<h3><%= @user.username %>'s memes</h3>
 <% if !@memes&.empty? %>
   <div class='memes-container'>
     <% @memes.reverse.each do |meme| %>

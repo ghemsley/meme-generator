@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
           if @comment&.user_id == @user.id || @user.admin
             erb :'comments/edit'
           else
-            flash[:error] = "Error: You don't have the proper authorization"
+            flash[:error] = "Error: You don't have the required permissions"
             redirect '/'
           end
         else
@@ -85,7 +85,7 @@ class CommentsController < ApplicationController
           flash[:error] = 'Error: Failed to delete comment'
         end
       else
-        flash[:error] = 'Error: You do not have the required permissions'
+        flash[:error] = "Error: You don't have the required permissions"
       end
       redirect "/memes/#{meme_id}"
     else

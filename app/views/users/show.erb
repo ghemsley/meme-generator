@@ -5,6 +5,14 @@
 <% end %>
 <div class='user-info'>
   <p>Member since <%=  @user&.created_at.localtime.to_formatted_s(:short) %></p>
+  <% if !@user&.memes.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/memes'><%= @user.memes.count %> meme<%= @user.memes.count > 1 ? 's' : '' %></a>
+  <% end %>
+  <% if !@user&.likes.empty? %>
+    <p>|</p>
+    <a href='/users/<%= @user.id %>/likes'><%= @user.likes.count %> liked meme<%= @user.likes.count > 1 ? 's' : '' %></a>
+  <% end %>
   <% if !@user&.followers.empty? %>
     <p>|</p>
     <a href='/users/<%= @user.id %>/followers'><%= @user.followers.count %> follower<%= @user.followers.count > 1 ? 's' : '' %></a>
