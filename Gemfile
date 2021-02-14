@@ -1,10 +1,11 @@
-ruby "2.6.6"
+ruby '2.6.6'
 source 'http://rubygems.org'
 
 group :default do
   gem 'activerecord'
   gem 'bcrypt'
   gem 'carrierwave'
+  gem 'fog-aws'
   gem 'json'
   gem 'pg'
   gem 'puma'
