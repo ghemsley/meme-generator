@@ -30,9 +30,13 @@ var memeModal = new modal({
   closeLabel: 'Close'
 })
 
-memeModal.addFooterBtn('Save to account', 'create-button', () => {
-  buttonSubmit()
-})
+memeModal.addFooterBtn(
+  'Save to account',
+  'create-button tingle-create-button',
+  () => {
+    buttonSubmit()
+  }
+)
 
 global.formSubmit = (event) => {
   event.preventDefault()
@@ -50,6 +54,9 @@ global.formSubmit = (event) => {
   outerContainer.appendChild(innerContainer)
   memeModal.setContent(outerContainer)
   memeModal.open()
+  setTimeout(() => {
+    document.querySelector('.tingle-create-button').scrollIntoView(false)
+  }, 500)
   return false
 }
 
