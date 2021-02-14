@@ -2,6 +2,8 @@
 
 A Sinatra/Activerecord app for generating tasty memes
 
+[Demo](https://wow-meme-generator.herokuapp.com)
+
 ![Meme Generator homepage](./homepage.png)
 
 ## Installation
@@ -14,9 +16,10 @@ This project uses NodeJS and Ruby, so you will need those set up first. You can 
 4. To make sure the Javascript scripts are properly compiled, you should run `yarn build`. It should generate some scripts in the `./public/js` directory. 
 5. After that, you can run the migrations to setup the database: `rake db:migrate`
 6. If that successfully completes, the next step is to setup some environment variables. Unless you want to use a dotfile (which will require some extra setup not covered here), you can enter the following:
-  1. `export SINATRA_SESSION_SECRET=(enter your preferred secret here, minus parentheses)`
-  2. `export SINATRA_ADMIN_PASSWORD=(enter your preferred admin password here, minus parentheses)`
-7. Now the project should be ready to launch with `rackup`. The homepage should then be ready to view at `http://localhost:9292`
+7. `export SINATRA_SESSION_SECRET=(enter your preferred secret here, minus parentheses)`
+8. `export SINATRA_ADMIN_PASSWORD=(enter your preferred admin password here, minus parentheses)`
+9. This project is configured to use an AWS S3 bucket for file storage. You can set up your own bucket on the free tier, but that is outside the scope of this readme. However, if you do want to do this, check the file `/config/environment.rb` to see what other environment variables you will need to set to get the bucket storage working (the relevant variables are inside the Carrierwave config block). Alternatively, you can modify the `/app/uploader/image_uploader.rb` file to use `:file` storage instead of `:fog` to have the uploads saved locally instead of to S3. If you do that, you will want to uncomment the commented line starting with `config.root` in `/config/environment.rb`.
+10. Now the project should be ready to launch with `rackup`. The homepage should then be ready to view at `http://localhost:9292`
 
 ## Usage
 
@@ -33,8 +36,6 @@ To unfollow someone, navigate to their user account page and click the 'Unfollow
 Memes can be liked, unliked, commented on, edited and deleted. Comments can be edited and deleted as well. Users can edit or delete their accounts as long as they know their current password, otherwise the admin user can also edit and delete any account that has been created.
 
 Once you've liked some memes, they should show up on your 'Likes' page, accessible from your user's account page.
-
-When a meme is created, the image chosen at the creation page will be saved under the `public/uploads` directory.
 
 This app hasn't been tested with very large images very much, so there may be some limitations there.
 
