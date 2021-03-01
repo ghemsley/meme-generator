@@ -1,7 +1,5 @@
 require './config/environment'
 require_relative '../uploader/image_uploader'
-require 'carrierwave'
-require 'carrierwave/orm/activerecord'
 class Meme < ActiveRecord::Base
   belongs_to :user
   has_many :likes, dependent: :destroy

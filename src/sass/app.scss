@@ -5,6 +5,12 @@
 }
 
 @font-face {
+  font-family: 'ImpactBundled';
+  src: url('../fonts/Impact/impact.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Nunito';
   src: url('../fonts/Nunito/Nunito-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
   font-display: swap;
@@ -277,7 +283,7 @@ nav {
   padding: 0px;
   margin: 0px;
   h1 {
-    font-family: Impact;
+    font-family: Impact, 'ImpactBundled';
     font-size: 3em;
     text-transform: uppercase;
     color: white !important;
@@ -445,7 +451,7 @@ nav {
     left: 0;
     right: 0;
     line-height: 1em;
-    font-family: Impact;
+    font-family: Impact, 'ImpactBundled';
     font-size: 3em;
     text-transform: uppercase;
     color: white !important;
@@ -988,6 +994,15 @@ form {
       border-top: 8px solid #f4faff;
       border-bottom: 8px solid transparent;
     }
+  }
+}
+
+@media (max-width: 1270px) {
+  .doge-div {
+    display: none;
+  }
+  .hashtags {
+    display: none;
   }
 }
 

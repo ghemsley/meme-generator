@@ -116,7 +116,7 @@ class MemesController < ApplicationController
             meme.top_caption = Sanitize.fragment(params[:meme][:top_caption]) if params[:meme][:top_caption]
             meme.bottom_caption = Sanitize.fragment(params[:meme][:bottom_caption]) if params[:meme][:bottom_caption]
             meme.image = params[:meme][:image] if params[:meme][:image]
-            meme.original_image = params[:meme][:image] if params[:meme][:image]
+            meme.original_image = params[:meme][:original_image] if params[:meme][:original_image]
             if meme.save
               flash[:success] = 'Success: Edits were saved!'
             else

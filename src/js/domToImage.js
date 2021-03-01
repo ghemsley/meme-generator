@@ -62,7 +62,6 @@ global.formSubmit = (event) => {
 
 global.buttonSubmit = () => {
   domtoimage.toPng(innerContainer).then(function (dataUrl) {
-    console.log(dataUrl)
     var image2 = new Image()
     image2.src = dataUrl
     fetch(dataUrl)
@@ -92,7 +91,7 @@ global.buttonSubmit = () => {
             window.location.href = `/users/${user_id}/memes`
           })
           .catch(function (error) {
-            console.error('error', error)
+            console.error(error)
           })
       })
   })

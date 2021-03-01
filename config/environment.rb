@@ -3,6 +3,12 @@
 require 'bundler/setup'
 Bundler.require(:default)
 
+require 'sinatra/flash'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'sanitize'
+require 'digest'
+
 configure :development do
   set :database, { adapter: 'sqlite3', database: 'db/development.sqlite3' }
   set :show_exceptions, true

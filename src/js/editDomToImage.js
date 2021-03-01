@@ -83,6 +83,7 @@ global.formSubmit = (event) => {
             image.src = event.target.result
           })
           reader.readAsDataURL(blob)
+          file = blob
         })
         .then((result) => {
           image.src = result
@@ -123,6 +124,11 @@ global.buttonSubmit = () => {
           file2,
           name + `.${file2.type.split('/').pop()}`
         )
+        formData.append(
+          'meme[original_image]',
+          file,
+          name + `_original.${file.type.split('/').pop()}`
+        )
         fetch(`/memes/${meme_id}`, {
           method: 'PATCH',
           body: formData
@@ -131,7 +137,7 @@ global.buttonSubmit = () => {
             window.location.href = `/users/${user_id}/memes`
           })
           .catch(function (error) {
-            console.error('error', error)
+            console.error(error)
           })
       })
   })
